@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Hadan Alves — Design Gráfico Premium</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&display=swap" rel="stylesheet">
@@ -217,6 +220,34 @@ body.admin-mode .admin-tip{display:block}
 .hero-visual.has-admin-img .hero-admin-img{display:block}
 @media(max-width:780px){.admin-grid{grid-template-columns:1fr}.admin-open{left:1rem;bottom:5.2rem}}
 
+
+
+/* ===== MOBILE PREMIUM UPDATE ===== */
+html,body{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+.btn,.admin-btn,.admin-open,.wa-fixed,.hamb{min-height:48px;touch-action:manipulation}
+input,select,textarea{font-size:16px;appearance:none;-webkit-appearance:none}
+img{max-width:100%;height:auto}
+.hamb{width:48px;height:48px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:14px;background:rgba(214,168,61,.06)}
+.hamb span{transition:.25s}.hamb.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamb.active span:nth-child(2){opacity:0}.hamb.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.navlinks.open a{width:100%;text-align:center;padding:.85rem 1rem;border-radius:14px;background:rgba(214,168,61,.05)}
+.hero{width:100%}.hero-actions .btn{width:auto}.card,.kit,.panel,.step,.quote{word-break:normal;overflow-wrap:anywhere}
+.admin-box{-webkit-overflow-scrolling:touch}.admin-close{position:sticky;top:0;z-index:3;background:#080808}
+@media(max-width:1050px){
+  nav{top:1.5rem;padding:.85rem 1rem}.logo{font-size:1.35rem}.navlinks.open{top:4.95rem;max-height:calc(100vh - 6rem);overflow:auto;box-shadow:0 24px 90px rgba(0,0,0,.65)}
+  .hero{padding:7.4rem 1.05rem 3.2rem;gap:1.5rem}.hero p{font-size:.98rem;line-height:1.7}.hero-actions{display:grid;grid-template-columns:1fr;gap:.8rem}.hero-actions .btn{width:100%}.hero-metrics{margin-top:2rem}.metric{padding:1.15rem}.metric strong{font-size:2.25rem}
+  .hero-visual{min-height:260px}.orbit{width:min(72vw,290px);height:min(72vw,290px)}.hero-admin-img{width:min(84vw,380px)}
+  section{padding:4rem 1.05rem}.services{gap:1px}.card{min-height:auto;padding:1.7rem 1.2rem}.kits{gap:1rem}.kit{padding:1.8rem 1.25rem}.showcase{margin-top:2rem}.panel{padding:2rem 1.25rem;min-height:320px}.mock{min-height:160px}.process,.testimonials{gap:.8rem}.form{padding:1rem;border-radius:22px}.wa-fixed{right:1rem;bottom:1rem;width:58px;height:58px}.admin-open{left:1rem;bottom:4.95rem;padding:.75rem .9rem;font-size:.68rem}
+}
+@media(max-width:768px){
+  .marquee-top{font-size:.58rem;padding:.3rem 0}nav{top:1.35rem}.badge{font-size:.58rem;line-height:1.35;padding:.55rem .75rem}.hero{min-height:auto}h1{font-size:clamp(2.55rem,15vw,3.25rem);line-height:.95;letter-spacing:-.045em}.title{font-size:clamp(2rem,10vw,2.8rem)}.lead{font-size:.95rem}.services,.kits,.showcase,.process,.testimonials,.hero-metrics,.form-row{grid-template-columns:1fr}.kit.popular{transform:none}.kit .big{font-size:3.2rem}.float{display:none!important}.ticker{padding:.75rem 0}.ticker span{font-size:.85rem}.admin-panel{align-items:stretch;padding:0}.admin-box{width:100%;height:100dvh;max-height:none;border-radius:0;padding:1rem;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}.admin-grid{grid-template-columns:1fr}.admin-actions{display:grid;grid-template-columns:1fr}.admin-actions .admin-btn{width:100%}footer{display:grid;text-align:center;justify-content:center;padding:2rem 1rem 6rem}
+}
+@media(max-width:390px){
+  .hero{padding-left:.85rem;padding-right:.85rem}h1{font-size:2.35rem}.btn{font-size:.66rem;padding:.9rem 1rem}.card,.kit,.panel,.step,.quote{padding:1.35rem 1rem}.diamond{width:128px;height:128px}.diamond span{font-size:3.9rem}.mock b{font-size:1.55rem}.price{font-size:1.8rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
 </style>
 </head>
 <body>
@@ -227,7 +258,7 @@ body.admin-mode .admin-tip{display:block}
   <ul class="navlinks" id="navlinks">
     <li><a href="#servicos">Serviços</a></li><li><a href="#kits">Kits</a></li><li><a href="#portfolio">Portfólio</a></li><li><a href="#processo">Processo</a></li><li><a class="nav-cta" href="#contato">Orçamento</a></li>
   </ul>
-  <div class="hamb" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <button class="hamb" type="button" aria-label="Abrir menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <header class="hero">
@@ -352,7 +383,7 @@ body.admin-mode .admin-tip{display:block}
   <div class="admin-box">
     <button class="admin-close" onclick="closeAdmin()">×</button>
     <h2>Painel ADM</h2>
-    <p>Senha padrão: <strong>admin123</strong>. Após entrar, clique nos textos do site para editar. As alterações ficam salvas no navegador pelo localStorage.</p>
+    <p>Senha padrão: <strong>admin123</strong>. Após entrar, use o Editor completo do site para alterar textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos.</p>
 
     <div id="adminLogin">
       <div class="admin-field">
@@ -420,8 +451,13 @@ body.admin-mode .admin-tip{display:block}
 <div class="admin-tip">Modo edição ativo — clique nos textos para alterar e depois salve.</div>
 
 <script>
-function toggleMenu(){document.getElementById('navlinks').classList.toggle('open')}
-document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>document.getElementById('navlinks').classList.remove('open'));
+function toggleMenu(){
+  const nav=document.getElementById('navlinks');
+  const hamb=document.querySelector('.hamb');
+  nav.classList.toggle('open');
+  hamb && hamb.classList.toggle('active', nav.classList.contains('open'));
+}
+document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>{document.getElementById('navlinks').classList.remove('open');document.querySelector('.hamb')?.classList.remove('active')});
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);obs.unobserve(e.target)}})},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 function sendWA(e){
@@ -595,11 +631,292 @@ document.getElementById('admHeroFile')?.addEventListener('change', function(){
   };
   reader.readAsDataURL(file);
 });
+
+
+/* ===== FUNÇÕES MOBILE EXTRAS ===== */
+document.addEventListener('click', function(e){
+  const nav=document.getElementById('navlinks');
+  const hamb=document.querySelector('.hamb');
+  if(nav && hamb && nav.classList.contains('open') && !nav.contains(e.target) && !hamb.contains(e.target)){
+    nav.classList.remove('open');
+    hamb.classList.remove('active');
+  }
+});
+window.addEventListener('resize', function(){
+  const nav=document.getElementById('navlinks');
+  const hamb=document.querySelector('.hamb');
+  if(window.innerWidth > 1050 && nav){nav.classList.remove('open');hamb?.classList.remove('active')}
+});
+document.querySelectorAll('img').forEach(img=>{img.loading='lazy';img.decoding='async'});
+
 document.addEventListener('DOMContentLoaded', ()=>{
   markEditable();
   loadSavedText();
   loadSettings();
 });
+
+/* ===== ADM UNIVERSAL — TEXTOS, LINKS, FOTOS, FORMULÁRIO E VALORES ===== */
+(function(){
+  const UKEY = 'hadan_universal_admin_v3';
+  const PASSKEY = 'hadan_site_admin_pass_v1';
+  const DEFAULT_PHONE = '5513991802942';
+  const DEFAULT_MSG = 'Olá Hadan! Quero um orçamento.';
+
+  const qsa = (s, root=document) => Array.from(root.querySelectorAll(s));
+  const esc = (v='') => String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const fileToDataURL = file => new Promise(resolve => { const r = new FileReader(); r.onload = e => resolve(e.target.result); r.readAsDataURL(file); });
+
+  const textSelectors = [
+    '.marquee-top span','.logo','.navlinks a','.badge','h1','.hero p','.btn',
+    '.metric strong','.metric span','.float small','.float b','.float p',
+    '.ticker span','.eyebrow','.title','.lead','.card h3','.card p','.price',
+    '.kit h3','.kit p','.kit .big','.kit li','.tag','.panel h3','.panel p',
+    '.mock b','.step h3','.step p','.quote p','.quote b','footer div','.footlogo',
+    'option'
+  ];
+
+  const imageSlots = [
+    {key:'hero', label:'Imagem principal / avatar do Hero', selector:'#heroAdminImage', kind:'img'},
+    {key:'portfolio_principal', label:'Foto principal do Portfólio', selector:'.panel', kind:'background'},
+    {key:'portfolio_1', label:'Portfólio 1', selector:'.mock:nth-child(1)', kind:'background'},
+    {key:'portfolio_2', label:'Portfólio 2', selector:'.mock:nth-child(2)', kind:'background'},
+    {key:'portfolio_3', label:'Portfólio 3', selector:'.mock:nth-child(3)', kind:'background'},
+    {key:'portfolio_4', label:'Portfólio 4', selector:'.mock:nth-child(4)', kind:'background'}
+  ];
+
+  function getStore(){ try{return JSON.parse(localStorage.getItem(UKEY)||'{}')}catch(e){return {}} }
+  function setStore(data){ localStorage.setItem(UKEY, JSON.stringify(data)); }
+  function stableKey(el, prefix, index){
+    if(!el.dataset.adminKey){
+      const label = (el.id || el.className || el.tagName || prefix).toString().replace(/\s+/g,'_').slice(0,35);
+      el.dataset.adminKey = `${prefix}_${index}_${label}`;
+    }
+    return el.dataset.adminKey;
+  }
+
+  function collectTextElements(){
+    const found = [];
+    qsa(textSelectors.join(',')).forEach((el, i)=>{
+      if(el.closest('.admin-panel') || el.closest('script') || el.closest('style')) return;
+      if(!el.textContent.trim() && el.tagName !== 'OPTION') return;
+      const key = stableKey(el, 'txt', found.length);
+      found.push({el, key, label: `${el.tagName.toLowerCase()} ${el.id ? '#'+el.id : ''} ${el.className ? '.'+String(el.className).replace(/\s+/g,'.') : ''}`.trim()});
+    });
+    return found;
+  }
+
+  function collectLinks(){
+    const arr=[];
+    qsa('a[href]').forEach((el)=>{
+      if(el.closest('.admin-panel')) return;
+      const key = stableKey(el, 'link', arr.length);
+      arr.push({el, key, label: el.textContent.trim() || el.title || el.href});
+    });
+    return arr;
+  }
+
+  function collectFields(){
+    const arr=[];
+    qsa('input, textarea, select').forEach((el)=>{
+      if(el.closest('.admin-panel')) return;
+      const key = stableKey(el, 'field', arr.length);
+      arr.push({el, key, label: el.placeholder || el.id || el.name || el.tagName});
+    });
+    return arr;
+  }
+
+  function applyImage(slot, url){
+    const el = document.querySelector(slot.selector);
+    if(!el) return;
+    if(slot.kind === 'img'){
+      if(url){
+        el.src = url;
+        document.getElementById('heroVisual')?.classList.add('has-admin-img');
+      }else{
+        el.removeAttribute('src');
+        document.getElementById('heroVisual')?.classList.remove('has-admin-img');
+      }
+    }else{
+      el.classList.add('adm-photo-slot');
+      if(url){
+        el.style.backgroundImage = `linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.62)), url('${url}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }else{
+        el.style.backgroundImage = '';
+      }
+    }
+  }
+
+  function applyStore(){
+    const data = getStore();
+    collectTextElements().forEach(item=>{ if(data.texts && data.texts[item.key] !== undefined) item.el.innerHTML = data.texts[item.key]; });
+    collectLinks().forEach(item=>{ if(data.links && data.links[item.key] !== undefined) item.el.setAttribute('href', data.links[item.key]); });
+    collectFields().forEach(item=>{
+      const v = data.fields && data.fields[item.key];
+      if(!v) return;
+      if(v.placeholder !== undefined) item.el.placeholder = v.placeholder;
+      if(item.el.tagName === 'SELECT' && v.options){
+        item.el.innerHTML = v.options.split('\n').map(line=>line.trim()).filter(Boolean).map((line,idx)=>`<option value="${esc(idx===0 && line.toLowerCase().includes('selecione') ? '' : line)}">${esc(line)}</option>`).join('');
+      }
+    });
+    if(data.images){ imageSlots.forEach(slot=>applyImage(slot, data.images[slot.key] || '')); }
+    if(data.settings){
+      document.title = data.settings.title || document.title;
+      document.documentElement.style.setProperty('--gold', data.settings.gold || '#d6a83d');
+      document.documentElement.style.setProperty('--gold2', data.settings.gold2 || '#ffd36a');
+      updateWhatsapp(data.settings.phone || DEFAULT_PHONE, data.settings.waMsg || DEFAULT_MSG);
+    }
+  }
+
+  function updateWhatsapp(phone, msg){
+    const encoded = encodeURIComponent(msg || DEFAULT_MSG);
+    qsa('a[href*="wa.me"]').forEach(a=> a.href = `https://wa.me/${phone || DEFAULT_PHONE}?text=${encoded}`);
+  }
+
+  window.sendWA = function(e){
+    e.preventDefault();
+    const data = getStore();
+    const phone = data.settings?.phone || localStorage.getItem('adm_phone') || DEFAULT_PHONE;
+    const nome=document.getElementById('nome')?.value.trim() || '';
+    const whats=document.getElementById('whats')?.value.trim() || '';
+    const servico=document.getElementById('servico')?.value || '';
+    const msg=document.getElementById('msg')?.value.trim() || '';
+    const texto=encodeURIComponent(`Olá! Quero um orçamento.\n\nNome: ${nome}\nWhatsApp: ${whats}\nServiço: ${servico}\nMensagem: ${msg}`);
+    window.open(`https://wa.me/${phone}?text=${texto}`,'_blank');
+  };
+
+  function renderUniversalAdmin(){
+    const controls = document.getElementById('adminControls');
+    if(!controls || document.getElementById('universalAdmin')) return;
+    const data = getStore();
+    const texts = collectTextElements();
+    const links = collectLinks();
+    const fields = collectFields();
+    const html = `
+      <div id="universalAdmin" class="universal-admin">
+        <h3>Editor completo do site</h3>
+        <p>Edite todos os textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos. Depois clique em <b>Salvar tudo</b>.</p>
+        <div class="ua-actions">
+          <button class="admin-btn gold" type="button" onclick="saveUniversalAdmin()">Salvar tudo</button>
+          <button class="admin-btn" type="button" onclick="applyUniversalAdminNow()">Aplicar sem fechar</button>
+          <button class="admin-btn" type="button" onclick="downloadFullEditedHTML()">Baixar HTML final</button>
+        </div>
+        <details open><summary>Configurações principais</summary>
+          <div class="ua-grid">
+            <label>Título da aba<input id="ua_title" value="${esc(data.settings?.title || document.title)}"></label>
+            <label>WhatsApp<input id="ua_phone" value="${esc(data.settings?.phone || DEFAULT_PHONE)}"></label>
+            <label>Mensagem padrão WhatsApp<input id="ua_msg" value="${esc(data.settings?.waMsg || DEFAULT_MSG)}"></label>
+            <label>Nova senha ADM<input id="ua_pass" type="password" placeholder="Preencha somente se quiser trocar"></label>
+            <label>Cor principal<input id="ua_gold" type="color" value="${esc(data.settings?.gold || '#d6a83d')}"></label>
+            <label>Cor clara<input id="ua_gold2" type="color" value="${esc(data.settings?.gold2 || '#ffd36a')}"></label>
+          </div>
+        </details>
+        <details><summary>Fotos e imagens</summary>
+          <div class="ua-grid">
+            ${imageSlots.map(slot=>`<label>${esc(slot.label)}<input class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole a URL da imagem" value="${esc(data.images?.[slot.key] || '')}"><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*"></label>`).join('')}
+          </div>
+        </details>
+        <details><summary>Textos, valores, serviços, kits e portfólio</summary>
+          <div class="ua-list">
+            ${texts.map(item=>`<label><span>${esc(item.label)}</span><textarea data-text-key="${item.key}">${esc(data.texts?.[item.key] ?? item.el.innerHTML)}</textarea></label>`).join('')}
+          </div>
+        </details>
+        <details><summary>Links e botões</summary>
+          <div class="ua-list">
+            ${links.map(item=>`<label><span>${esc(item.label)}</span><input data-link-key="${item.key}" value="${esc(data.links?.[item.key] ?? item.el.getAttribute('href'))}"></label>`).join('')}
+          </div>
+        </details>
+        <details><summary>Campos do formulário</summary>
+          <div class="ua-list">
+            ${fields.map(item=>`<label><span>${esc(item.label)}</span><input data-field-key="${item.key}" data-field-part="placeholder" value="${esc(data.fields?.[item.key]?.placeholder ?? item.el.placeholder ?? '')}" placeholder="Placeholder do campo">${item.el.tagName==='SELECT'?`<textarea data-field-key="${item.key}" data-field-part="options" placeholder="Uma opção por linha">${esc(data.fields?.[item.key]?.options ?? qsa('option', item.el).map(o=>o.textContent).join('\n'))}</textarea>`:''}</label>`).join('')}
+          </div>
+        </details>
+      </div>`;
+    controls.insertAdjacentHTML('beforeend', html);
+
+    qsa('.ua-img-file', controls).forEach(input=>{
+      input.addEventListener('change', async function(){
+        const file = this.files && this.files[0]; if(!file) return;
+        const url = await fileToDataURL(file);
+        const key = this.dataset.imgKey;
+        const urlInput = controls.querySelector(`.ua-img-url[data-img-key="${key}"]`);
+        if(urlInput) urlInput.value = url;
+      });
+    });
+  }
+
+  window.applyUniversalAdminNow = function(){
+    const root = document.getElementById('universalAdmin');
+    if(!root) return;
+    const data = {settings:{}, texts:{}, links:{}, fields:{}, images:{}};
+    data.settings.title = document.getElementById('ua_title')?.value || document.title;
+    data.settings.phone = document.getElementById('ua_phone')?.value || DEFAULT_PHONE;
+    data.settings.waMsg = document.getElementById('ua_msg')?.value || DEFAULT_MSG;
+    data.settings.gold = document.getElementById('ua_gold')?.value || '#d6a83d';
+    data.settings.gold2 = document.getElementById('ua_gold2')?.value || '#ffd36a';
+    const newPass = document.getElementById('ua_pass')?.value.trim();
+    if(newPass) localStorage.setItem(PASSKEY, newPass);
+    qsa('[data-text-key]', root).forEach(el=> data.texts[el.dataset.textKey] = el.value);
+    qsa('[data-link-key]', root).forEach(el=> data.links[el.dataset.linkKey] = el.value);
+    qsa('[data-field-key]', root).forEach(el=>{
+      const k=el.dataset.fieldKey, p=el.dataset.fieldPart;
+      data.fields[k] = data.fields[k] || {};
+      data.fields[k][p] = el.value;
+    });
+    qsa('[data-img-key].ua-img-url', root).forEach(el=> data.images[el.dataset.imgKey] = el.value);
+    setStore(data);
+    applyStore();
+  };
+
+  window.saveUniversalAdmin = function(){
+    window.applyUniversalAdminNow();
+    alert('Tudo salvo com sucesso. As alterações ficam gravadas neste navegador. Para publicar no GitHub, use “Baixar HTML final”.');
+  };
+
+  window.downloadFullEditedHTML = function(){
+    window.applyUniversalAdminNow();
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.admin-panel, .admin-open, .admin-tip').forEach(el=>{}); // mantém ADM no arquivo final
+    const doc = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([doc], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'site-hadan-com-adm-total.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const oldLogin = window.loginAdmin;
+  window.loginAdmin = function(){
+    if(typeof oldLogin === 'function') oldLogin();
+    if(document.getElementById('adminControls')?.style.display !== 'none') renderUniversalAdmin();
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    applyStore();
+    renderUniversalAdmin();
+    const style = document.createElement('style');
+    style.textContent = `
+      .universal-admin{margin-top:1.2rem;border-top:1px solid var(--line);padding-top:1.2rem}
+      .universal-admin h3{font-family:Playfair Display,serif;font-size:1.45rem;margin-bottom:.4rem;color:var(--gold2)}
+      .universal-admin details{border:1px solid var(--line);border-radius:18px;padding:1rem;margin:.9rem 0;background:rgba(255,255,255,.025)}
+      .universal-admin summary{cursor:pointer;color:var(--gold2);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}
+      .ua-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1rem}
+      .ua-list{display:grid;gap:.8rem;margin-top:1rem}
+      .universal-admin label{display:grid;gap:.35rem;color:var(--gold2);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+      .universal-admin label span{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:700}
+      .universal-admin input,.universal-admin textarea{width:100%;background:#050505;border:1px solid var(--line);border-radius:12px;color:var(--white);padding:.75rem;font-family:Inter;font-size:16px;text-transform:none;letter-spacing:0;font-weight:500}
+      .universal-admin textarea{min-height:84px;resize:vertical}
+      .ua-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:.9rem 0}
+      .adm-photo-slot{position:relative;color:#fff;text-shadow:0 3px 12px #000}
+      @media(max-width:760px){.ua-grid{grid-template-columns:1fr}.admin-box{padding:1rem}.universal-admin details{padding:.8rem}}
+    `;
+    document.head.appendChild(style);
+  });
+})();
+
 
 </script>
 </body>
