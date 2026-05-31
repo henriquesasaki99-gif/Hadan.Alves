@@ -822,16 +822,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }, {passive:true});
   }
 
-  function applyStore(){
-    const data = getStore();
-    collectTextElements().forEach(item=>{ if(data.texts && data.texts[item.key] !== undefined) item.el.innerHTML = data.texts[item.key]; });
-    collectLinks().forEach(item=>{ if(data.links && data.links[item.key] !== undefined) item.el.setAttribute('href', data.links[item.key]); });
+  function applyDataToSite(data){
+    data = data || {};
+    collectTextElements().forEach(item=>{
+      if(data.texts && Object.prototype.hasOwnProperty.call(data.texts, item.key)) item.el.innerHTML = data.texts[item.key];
+    });
+    collectLinks().forEach(item=>{
+      if(data.links && Object.prototype.hasOwnProperty.call(data.links, item.key)) item.el.setAttribute('href', data.links[item.key]);
+    });
     collectFields().forEach(item=>{
       const v = data.fields && data.fields[item.key];
       if(!v) return;
       if(v.placeholder !== undefined) item.el.placeholder = v.placeholder;
-      if(item.el.tagName === 'SELECT' && v.options){
-        item.el.innerHTML = v.options.split('\n').map(line=>line.trim()).filter(Boolean).map((line,idx)=>`<option value="${esc(idx===0 && line.toLowerCase().includes('selecione') ? '' : line)}">${esc(line)}</option>`).join('');
+      if(item.el.tagName === 'SELECT' && v.options !== undefined){
+        item.el.innerHTML = String(v.options).split('\n').map(line=>line.trim()).filter(Boolean).map((line,idx)=>`<option value="${esc(idx===0 && line.toLowerCase().includes('selecione') ? '' : line)}">${esc(line)}</option>`).join('');
       }
     });
     if(data.images){ imageSlots.forEach(slot=>applyImage(slot, data.images[slot.key] || '')); }
@@ -841,6 +845,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
       document.documentElement.style.setProperty('--gold2', data.settings.gold2 || '#ffd36a');
       updateWhatsapp(data.settings.phone || DEFAULT_PHONE, data.settings.waMsg || DEFAULT_MSG);
     }
+  }
+
+  function applyStore(){
+    applyDataToSite(getStore());
   }
 
   function updateWhatsapp(phone, msg){
@@ -870,12 +878,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const html = `
       <div id="universalAdmin" class="universal-admin">
         <h3>Editor completo do site</h3>
-        <p>Edite todos os textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos. Depois clique em <b>Salvar tudo</b>.</p>
+        <p>Edite todos os textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos. Depois clique em <b>Aplicar sem salvar</b> para testar ou <b>Salvar tudo</b> para gravar.</p>
         <div class="ua-actions">
-          <button class="admin-btn gold" type="button" onclick="saveUniversalAdmin()">Salvar tudo</button>
-          <button class="admin-btn" type="button" onclick="applyUniversalAdminNow()">Aplicar sem fechar</button>
-          <button class="admin-btn" type="button" onclick="downloadFullEditedHTML()">Baixar HTML final</button>
+          <button class="admin-btn gold" id="uaSaveBtn" type="button">Salvar tudo</button>
+          <button class="admin-btn" id="uaApplyBtn" type="button">Aplicar sem salvar</button>
+          <button class="admin-btn" id="uaDownloadBtn" type="button">Baixar HTML final</button>
         </div>
+        <div id="uaStatus" class="ua-status" aria-live="polite"></div>
         <details open><summary>Configurações principais</summary>
           <div class="ua-grid">
             <label>Título da aba<input id="ua_title" value="${esc(data.settings?.title || document.title)}"></label>
@@ -927,16 +936,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
       });
     });
     qsa('.ua-img-url', controls).forEach(input=>{
+      input.addEventListener('input', ()=>window.applyUniversalAdminNow?.());
       input.addEventListener('change', ()=>window.applyUniversalAdminNow?.());
     });
+
+    document.getElementById('uaSaveBtn')?.addEventListener('click', window.saveUniversalAdmin);
+    document.getElementById('uaApplyBtn')?.addEventListener('click', window.applyUniversalAdminNow);
+    document.getElementById('uaDownloadBtn')?.addEventListener('click', window.downloadFullEditedHTML);
   }
 
-  window.applyUniversalAdminNow = function(){
+  function setStatus(msg){
+    const el = document.getElementById('uaStatus');
+    if(!el) return;
+    el.textContent = msg;
+    window.clearTimeout(setStatus._t);
+    setStatus._t = window.setTimeout(()=>{ el.textContent=''; }, 3500);
+  }
+
+  function readUniversalAdminData(){
     const root = document.getElementById('universalAdmin');
-    if(!root) return;
+    if(!root) return null;
     const data = {settings:{}, texts:{}, links:{}, fields:{}, images:{}};
     data.settings.title = document.getElementById('ua_title')?.value || document.title;
-    data.settings.phone = document.getElementById('ua_phone')?.value || DEFAULT_PHONE;
+    data.settings.phone = (document.getElementById('ua_phone')?.value || DEFAULT_PHONE).replace(/\D/g,'') || DEFAULT_PHONE;
     data.settings.waMsg = document.getElementById('ua_msg')?.value || DEFAULT_MSG;
     data.settings.gold = document.getElementById('ua_gold')?.value || '#d6a83d';
     data.settings.gold2 = document.getElementById('ua_gold2')?.value || '#ffd36a';
@@ -950,17 +972,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
       data.fields[k][p] = el.value;
     });
     qsa('[data-img-key].ua-img-url', root).forEach(el=> data.images[el.dataset.imgKey] = el.value);
-    setStore(data);
-    applyStore();
+    return data;
+  }
+
+  window.applyUniversalAdminNow = function(){
+    const data = readUniversalAdminData();
+    if(!data) return;
+    applyDataToSite(data);
+    setStatus('Alterações aplicadas na tela. Para manter após atualizar a página, clique em Salvar tudo.');
   };
 
   window.saveUniversalAdmin = function(){
-    window.applyUniversalAdminNow();
-    alert('Tudo salvo com sucesso. As alterações ficam gravadas neste navegador. Para publicar no GitHub, use “Baixar HTML final”.');
+    const data = readUniversalAdminData();
+    if(!data) return;
+    setStore(data);
+    applyDataToSite(data);
+    setStatus('Tudo salvo com sucesso neste navegador.');
+    alert('Tudo salvo com sucesso. Para publicar no GitHub, use “Baixar HTML final”.');
   };
 
   window.downloadFullEditedHTML = function(){
-    window.applyUniversalAdminNow();
+    const data = readUniversalAdminData();
+    if(data){ setStore(data); applyDataToSite(data); }
     const clone = document.documentElement.cloneNode(true);
     clone.querySelectorAll('.admin-panel, .admin-open, .admin-tip').forEach(el=>{}); // mantém ADM no arquivo final
     const doc = '<!DOCTYPE html>\n' + clone.outerHTML;
@@ -996,6 +1029,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       .universal-admin input,.universal-admin textarea{width:100%;background:#050505;border:1px solid var(--line);border-radius:12px;color:var(--white);padding:.75rem;font-family:Inter;font-size:16px;text-transform:none;letter-spacing:0;font-weight:500}
       .universal-admin textarea{min-height:84px;resize:vertical}
       .ua-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:.9rem 0}
+      .ua-status{min-height:1.2rem;color:var(--gold2);font-size:.78rem;font-weight:800;margin:.35rem 0 .7rem}
       .adm-photo-slot{position:relative;color:#fff;text-shadow:0 3px 12px #000}
       @media(max-width:760px){.ua-grid{grid-template-columns:1fr}.admin-box{padding:1rem}.universal-admin details{padding:.8rem}}
     `;
