@@ -688,7 +688,33 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   const qsa = (s, root=document) => Array.from(root.querySelectorAll(s));
   const esc = (v='') => String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-  const fileToDataURL = file => new Promise(resolve => { const r = new FileReader(); r.onload = e => resolve(e.target.result); r.readAsDataURL(file); });
+  const fileToDataURL = file => new Promise(resolve => {
+    // Converte e comprime a foto antes de salvar/aplicar.
+    // Isso evita erro de localStorage quando o ADM envia fotos grandes do celular.
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        const maxSide = 1400;
+        let w = img.naturalWidth || img.width;
+        let h = img.naturalHeight || img.height;
+        if(w > maxSide || h > maxSide){
+          const scale = Math.min(maxSide / w, maxSide / h);
+          w = Math.round(w * scale);
+          h = Math.round(h * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', 0.86));
+      };
+      img.onerror = function(){ resolve(e.target.result); };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
 
   const textSelectors = [
     '.marquee-top span','.logo','.navlinks a','.badge','h1','.hero p','.btn',
@@ -920,19 +946,32 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     qsa('.ua-img-file', controls).forEach(input=>{
       input.addEventListener('change', async function(){
-        const files = Array.from(this.files || []); if(!files.length) return;
-        const urls = await Promise.all(files.map(fileToDataURL));
-        const key = this.dataset.imgKey;
-        const urlInput = controls.querySelector(`.ua-img-url[data-img-key="${key}"]`);
-        if(urlInput){
-          if(key === 'hero'){
-            const current = urlInput.value.trim();
-            urlInput.value = [current, ...urls].filter(Boolean).join('\n');
-          }else{
-            urlInput.value = urls[0];
+        const files = Array.from(this.files || []);
+        if(!files.length) return;
+        setStatus('Carregando foto(s)...');
+        try{
+          const urls = await Promise.all(files.map(fileToDataURL));
+          const key = this.dataset.imgKey;
+          const urlInput = controls.querySelector(`.ua-img-url[data-img-key="${key}"]`);
+          if(urlInput){
+            if(key === 'hero'){
+              // No Hero, várias fotos são permitidas. O upload substitui a lista atual,
+              // evitando misturar fotos antigas sem querer. O usuário ainda pode colar URLs linha por linha.
+              urlInput.value = urls.filter(Boolean).join('\n');
+            }else{
+              urlInput.value = urls[0] || '';
+            }
+            urlInput.dispatchEvent(new Event('input', {bubbles:true}));
           }
+          window.applyUniversalAdminNow?.();
+          setStatus('Foto(s) aplicada(s) na página. Clique em Salvar tudo para gravar.');
+        }catch(err){
+          console.error(err);
+          alert('Não foi possível carregar a foto. Tente uma imagem menor ou em JPG/PNG.');
+          setStatus('Erro ao carregar foto.');
+        }finally{
+          this.value = '';
         }
-        window.applyUniversalAdminNow?.();
       });
     });
     qsa('.ua-img-url', controls).forEach(input=>{
@@ -985,10 +1024,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
   window.saveUniversalAdmin = function(){
     const data = readUniversalAdminData();
     if(!data) return;
-    setStore(data);
-    applyDataToSite(data);
-    setStatus('Tudo salvo com sucesso neste navegador.');
-    alert('Tudo salvo com sucesso. Para publicar no GitHub, use “Baixar HTML final”.');
+    try{
+      setStore(data);
+      applyDataToSite(data);
+      setStatus('Tudo salvo com sucesso neste navegador.');
+      alert('Tudo salvo com sucesso. Para publicar no GitHub, use “Baixar HTML final”.');
+    }catch(err){
+      console.error(err);
+      if(String(err && err.name).includes('Quota') || String(err).includes('quota')){
+        alert('As alterações foram aplicadas, mas as fotos estão muito pesadas para salvar no navegador. Reduzi a qualidade automaticamente; tente enviar menos fotos ou use links de imagem. Depois clique em Baixar HTML final.');
+      }else{
+        alert('Não foi possível salvar. As alterações foram aplicadas na tela, mas não ficaram gravadas no navegador.');
+      }
+      applyDataToSite(data);
+      setStatus('Aplicado na tela, mas não salvo no navegador.');
+    }
   };
 
   window.downloadFullEditedHTML = function(){
@@ -1011,6 +1061,27 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(typeof oldLogin === 'function') oldLogin();
     if(document.getElementById('adminControls')?.style.display !== 'none') renderUniversalAdmin();
   };
+
+
+
+  // Corrige também os campos antigos do ADM principal para trabalharem junto com o editor completo.
+  document.getElementById('admHeroFile')?.addEventListener('change', async function(){
+    const files = Array.from(this.files || []);
+    if(!files.length) return;
+    const urls = await Promise.all(files.map(fileToDataURL));
+    const current = getStore();
+    current.images = current.images || {};
+    current.images.hero = urls.filter(Boolean).join('
+');
+    setStore(current);
+    applyDataToSite(current);
+    const area = document.querySelector('.ua-img-url[data-img-key="hero"]');
+    if(area) area.value = current.images.hero;
+    const oldUrl = document.getElementById('admHeroUrl');
+    if(oldUrl) oldUrl.value = current.images.hero;
+    setStatus('Hero atualizado pelo upload. Clique em Salvar tudo para manter.');
+    this.value = '';
+  });
 
   document.addEventListener('DOMContentLoaded', function(){
     applyStore();
