@@ -218,6 +218,29 @@ body.admin-mode .admin-tip{display:block}
 }
 .hero-visual.has-admin-img .orbit{display:none}
 .hero-visual.has-admin-img .hero-admin-img{display:block}
+
+/* ===== HERO CARROSSEL ADM ===== */
+.hero-carousel{
+  width:min(38vw,520px);max-width:100%;display:none;position:relative;
+  align-items:center;justify-content:center;overflow:hidden;border-radius:28px;
+}
+.hero-carousel img{
+  width:100%;max-height:560px;object-fit:contain;display:none;
+  filter:drop-shadow(0 0 42px rgba(214,168,61,.32));animation:float 4s ease-in-out infinite;
+}
+.hero-carousel img.active{display:block}
+.hero-visual.has-admin-img .hero-carousel{display:flex}
+.hero-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:0;background:transparent;
+  color:var(--gold2);font-size:3.4rem;line-height:1;cursor:pointer;text-shadow:0 4px 18px #000;
+  width:54px;height:74px;display:grid;place-items:center;touch-action:manipulation;
+}
+.hero-arrow.prev{left:.2rem}.hero-arrow.next{right:.2rem}
+.hero-dots{position:absolute;left:0;right:0;bottom:.6rem;display:flex;justify-content:center;gap:.4rem;z-index:6}
+.hero-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold2);background:rgba(0,0,0,.35)}
+.hero-dot.active{background:var(--gold2)}
+@media(max-width:780px){.hero-carousel{width:min(86vw,390px)}.hero-carousel img{max-height:330px}.hero-arrow{font-size:3.9rem;width:64px;height:88px}}
+
 @media(max-width:780px){.admin-grid{grid-template-columns:1fr}.admin-open{left:1rem;bottom:5.2rem}}
 
 
@@ -278,7 +301,7 @@ img{max-width:100%;height:auto}
     </div>
   </div>
   <div class="hero-visual reveal" id="heroVisual">
-    <img id="heroAdminImage" class="hero-admin-img" alt="Imagem principal editável">
+    <div id="heroCarousel" class="hero-carousel" aria-label="Fotos principais do Hero"><img id="heroAdminImage" class="hero-admin-img active" alt="Imagem principal editável"></div>
     <div class="orbit"><div class="monogram"><div class="diamond"><span>H</span></div></div></div>
     <div class="float f1"><small>serviço destaque</small><b>Flyer Top</b><p>arte chamativa para vender</p></div>
     <div class="float f2"><small>contato direto</small><b>WhatsApp</b><p>(13) 99180-2942</p></div>
@@ -628,6 +651,7 @@ document.getElementById('admHeroFile')?.addEventListener('change', function(){
   const reader = new FileReader();
   reader.onload = function(ev){
     document.getElementById('admHeroUrl').value = ev.target.result;
+    if(typeof applyAdminSettings === 'function') applyAdminSettings();
   };
   reader.readAsDataURL(file);
 });
@@ -676,7 +700,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   ];
 
   const imageSlots = [
-    {key:'hero', label:'Imagem principal / avatar do Hero', selector:'#heroAdminImage', kind:'img'},
+    {key:'hero', label:'Fotos do Hero / avatar principal (2 ou mais fotos)', selector:'#heroCarousel', kind:'heroCarousel'},
     {key:'portfolio_principal', label:'Foto principal do Portfólio', selector:'.panel', kind:'background'},
     {key:'portfolio_1', label:'Portfólio 1', selector:'.mock:nth-child(1)', kind:'background'},
     {key:'portfolio_2', label:'Portfólio 2', selector:'.mock:nth-child(2)', kind:'background'},
@@ -725,9 +749,47 @@ document.addEventListener('DOMContentLoaded', ()=>{
     return arr;
   }
 
+  function parseImageList(value){
+    if(Array.isArray(value)) return value.filter(Boolean);
+    return String(value || '').split(/\n|,/).map(v=>v.trim()).filter(Boolean);
+  }
+
+  function showHeroSlide(index){
+    const carousel = document.getElementById('heroCarousel');
+    if(!carousel) return;
+    const imgs = Array.from(carousel.querySelectorAll('img'));
+    const dots = Array.from(carousel.querySelectorAll('.hero-dot'));
+    if(!imgs.length) return;
+    const current = ((index % imgs.length) + imgs.length) % imgs.length;
+    carousel.dataset.index = String(current);
+    imgs.forEach((img,i)=>img.classList.toggle('active', i===current));
+    dots.forEach((dot,i)=>dot.classList.toggle('active', i===current));
+  }
+  window.showHeroSlide = showHeroSlide;
+  window.nextHeroSlide = function(step){
+    const carousel = document.getElementById('heroCarousel');
+    const current = Number(carousel?.dataset.index || 0);
+    showHeroSlide(current + step);
+  };
+
   function applyImage(slot, url){
     const el = document.querySelector(slot.selector);
     if(!el) return;
+    if(slot.kind === 'heroCarousel'){
+      const urls = parseImageList(url);
+      const visual = document.getElementById('heroVisual');
+      if(urls.length){
+        el.innerHTML = urls.map((src,i)=>`<img class="hero-admin-img ${i===0?'active':''}" src="${esc(src)}" alt="Imagem principal ${i+1}" loading="lazy" decoding="async">`).join('') +
+          (urls.length > 1 ? `<button class="hero-arrow prev" type="button" onclick="nextHeroSlide(-1)" aria-label="Foto anterior">‹</button><button class="hero-arrow next" type="button" onclick="nextHeroSlide(1)" aria-label="Próxima foto">›</button><div class="hero-dots">${urls.map((_,i)=>`<button class="hero-dot ${i===0?'active':''}" type="button" onclick="showHeroSlide(${i})" aria-label="Ir para foto ${i+1}"></button>`).join('')}</div>` : '');
+        el.dataset.index = '0';
+        visual?.classList.add('has-admin-img');
+        enableHeroSwipe();
+      }else{
+        el.innerHTML = '<img id="heroAdminImage" class="hero-admin-img active" alt="Imagem principal editável">';
+        visual?.classList.remove('has-admin-img');
+      }
+      return;
+    }
     if(slot.kind === 'img'){
       if(url){
         el.src = url;
@@ -746,6 +808,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
         el.style.backgroundImage = '';
       }
     }
+  }
+
+  function enableHeroSwipe(){
+    const carousel = document.getElementById('heroCarousel');
+    if(!carousel || carousel.dataset.swipeReady) return;
+    carousel.dataset.swipeReady = '1';
+    let startX = 0;
+    carousel.addEventListener('touchstart', e=>{startX = e.touches[0].clientX;}, {passive:true});
+    carousel.addEventListener('touchend', e=>{
+      const dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 45) window.nextHeroSlide(dx < 0 ? 1 : -1);
+    }, {passive:true});
   }
 
   function applyStore(){
@@ -814,7 +888,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         </details>
         <details><summary>Fotos e imagens</summary>
           <div class="ua-grid">
-            ${imageSlots.map(slot=>`<label>${esc(slot.label)}<input class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole a URL da imagem" value="${esc(data.images?.[slot.key] || '')}"><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*"></label>`).join('')}
+            ${imageSlots.map(slot=> slot.kind === 'heroCarousel' ? `<label>${esc(slot.label)}<textarea class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole uma URL por linha ou envie várias fotos abaixo">${esc(data.images?.[slot.key] || '')}</textarea><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*" multiple><small>Para o Hero, envie 2 ou mais fotos. As setas e o arrastar no celular serão ativados automaticamente.</small></label>` : `<label>${esc(slot.label)}<input class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole a URL da imagem" value="${esc(data.images?.[slot.key] || '')}"><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*"></label>`).join('')}
           </div>
         </details>
         <details><summary>Textos, valores, serviços, kits e portfólio</summary>
@@ -837,12 +911,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     qsa('.ua-img-file', controls).forEach(input=>{
       input.addEventListener('change', async function(){
-        const file = this.files && this.files[0]; if(!file) return;
-        const url = await fileToDataURL(file);
+        const files = Array.from(this.files || []); if(!files.length) return;
+        const urls = await Promise.all(files.map(fileToDataURL));
         const key = this.dataset.imgKey;
         const urlInput = controls.querySelector(`.ua-img-url[data-img-key="${key}"]`);
-        if(urlInput) urlInput.value = url;
+        if(urlInput){
+          if(key === 'hero'){
+            const current = urlInput.value.trim();
+            urlInput.value = [current, ...urls].filter(Boolean).join('\n');
+          }else{
+            urlInput.value = urls[0];
+          }
+        }
+        window.applyUniversalAdminNow?.();
       });
+    });
+    qsa('.ua-img-url', controls).forEach(input=>{
+      input.addEventListener('change', ()=>window.applyUniversalAdminNow?.());
     });
   }
 
@@ -907,6 +992,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
       .ua-list{display:grid;gap:.8rem;margin-top:1rem}
       .universal-admin label{display:grid;gap:.35rem;color:var(--gold2);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
       .universal-admin label span{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:700}
+      .universal-admin small{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:600}
       .universal-admin input,.universal-admin textarea{width:100%;background:#050505;border:1px solid var(--line);border-radius:12px;color:var(--white);padding:.75rem;font-family:Inter;font-size:16px;text-transform:none;letter-spacing:0;font-weight:500}
       .universal-admin textarea{min-height:84px;resize:vertical}
       .ua-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:.9rem 0}
