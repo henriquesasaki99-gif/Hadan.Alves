@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
@@ -46,6 +45,1074 @@ nav{
 .nav-cta{background:var(--gold);color:#080808!important;padding:.7rem 1.15rem;font-weight:900;border-radius:999px}
 .hamb{display:none;flex-direction:column;gap:5px;cursor:pointer}.hamb span{width:24px;height:2px;background:var(--gold)}
 
-.hero{min-height:100vh;padding:9rem 4.5rem 5rem;position;display;grid-template-columns:1.08fr .92fr;align-items;gap:3rem;overflow}.hero{content:"";position;inset:-20%;background:radial-gradient(circle at 78% 34%,rgba(214,168,61,.22),transparent 28%),radial-gradient(circle at 8% 84%,rgba(255,211,106,.10),transparent 30%),linear-gradient(120deg,transparent,rgba(214,168,61,.05),transparent);filter(4px)}.grid-lines{position;inset:0;background-image(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.08;mask-image(to bottom,black,transparent 95%)}.hero-content{position;z-index:2}.badge{display;gap:.7rem;align-items;border:1px solid var(--line);background(214,168,61,.08);padding:.65rem 1rem;border-radius:999px;color(--gold2);font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform;margin-bottom:1.5rem}.badge i{width:8px;height:8px;border-radius:50%;background(--gold2);box-shadow:0 0 22px var(--gold2)}h1{font-family Display,serif;font-size(3.4rem,7.2vw,7rem);line-height:.88;letter-spacing:-.06em;font-weight:900;max-width:820px}h1 em{font-style;font-weight:500;color(--gold2);text-shadow:0 0 45px rgba(255,211,106,.18)}.hero p{max-width:650px;margin:1.6rem 0 2.2rem;color(--muted);font-size:1.08rem;line-height:1.85}.hero-actions{display;gap:1rem;flex-wrap}.btn{display;align-items;justify-content;gap:.55rem;text-decoration;text-transform;letter-spacing:.18em;font-size:.74rem;font-weight:900;padding:1rem 1.6rem;border-radius:999px;transition:.25s;border:1px solid transparent}.btn-gold{background(135deg,var(--gold),var(--gold2));color:#050505;box-shadow:0 18px 60px rgba(214,168,61,.18)}.btn-gold{transform(-3px);box-shadow:0 22px 80px rgba(214,168,61,.28)}.btn-ghost{border-color(--line);color(--gold2);background(255,255,255,.02)}.btn-ghost{background(214,168,61,.08)}.hero-metrics{display;grid-template-columns(3,1fr);gap:1px;background(--line);margin-top:3rem;max-width:720px}.metric{background(5,5,5,.92);padding:1.5rem}.metric strong{display;font-family Neue,sans-serif;color(--gold2);font-size:2.7rem;line-height:1}.metric span{font-size:.7rem;color(--muted);letter-spacing:.15em;text-transform}.hero-visual{position;z-index:2;min-height:560px;display;align-items;justify-content}.orbit{width(36vw,430px);height(36vw,430px);border:1px solid var(--line);border-radius:50%;position;display;align-items;justify-content;animation 18s linear infinite}.orbit,.orbit{content:"";position;border:1px solid rgba(214,168,61,.16);border-radius:50%}.orbit.orbit@keyframes spin{to{transform(360deg)}}.monogram{animation 18s linear infinite;text-align}@keyframes spinBack{to{transform(-360deg)}}.diamond{width:185px;height:185px;border:2px solid var(--gold);transform(45deg);display;align-items;justify-content;box-shadow:0 0 80px rgba(214,168,61,.17)}.diamond span{transform(-45deg);font-family Neue,sans-serif;color(--gold2);font-size:5.5rem}.float{position;background(18,18,18,.92);border:1px solid var(--line);padding:1rem 1.15rem;border-radius:18px;box-shadow:0 20px 80px rgba(0,0,0,.4);animation 4s ease-in-out infinite}.float small{display;color(--gold2);letter-spacing:.18em;text-transform;font-size:.58rem;font-weight:900}.float b{font-family Neue,sans-serif;font-size:1.7rem}.float p{font-size:.72rem;color(--muted);margin:.1rem 0 0}.f1{top:6%;left:3%}.f2{right:0;top:33%;animation-delay:1s}.f3{left:9%;bottom:6%;animation-delay:2s}@keyframes float{50%{transform(-12px)}}
+.hero{
+  min-height:100vh;padding:9rem 4.5rem 5rem;position:relative;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:3rem;overflow:hidden
+}
+.hero:before{
+  content:"";position:absolute;inset:-20%;background:
+  radial-gradient(circle at 78% 34%,rgba(214,168,61,.22),transparent 28%),
+  radial-gradient(circle at 8% 84%,rgba(255,211,106,.10),transparent 30%),
+  linear-gradient(120deg,transparent,rgba(214,168,61,.05),transparent);
+  filter:blur(4px)
+}
+.grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.08;mask-image:linear-gradient(to bottom,black,transparent 95%)}
+.hero-content{position:relative;z-index:2}
+.badge{
+  display:inline-flex;gap:.7rem;align-items:center;border:1px solid var(--line);background:rgba(214,168,61,.08);
+  padding:.65rem 1rem;border-radius:999px;color:var(--gold2);font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.5rem
+}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--gold2);box-shadow:0 0 22px var(--gold2)}
+h1{
+  font-family:Playfair Display,serif;font-size:clamp(3.4rem,7.2vw,7rem);line-height:.88;letter-spacing:-.06em;font-weight:900;
+  max-width:820px
+}
+h1 em{font-style:italic;font-weight:500;color:var(--gold2);text-shadow:0 0 45px rgba(255,211,106,.18)}
+.hero p{max-width:650px;margin:1.6rem 0 2.2rem;color:var(--muted);font-size:1.08rem;line-height:1.85}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.55rem;text-decoration:none;text-transform:uppercase;letter-spacing:.18em;
+  font-size:.74rem;font-weight:900;padding:1rem 1.6rem;border-radius:999px;transition:.25s;border:1px solid transparent
+}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#050505;box-shadow:0 18px 60px rgba(214,168,61,.18)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 80px rgba(214,168,61,.28)}
+.btn-ghost{border-color:var(--line);color:var(--gold2);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{background:rgba(214,168,61,.08)}
+.hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:3rem;max-width:720px}
+.metric{background:rgba(5,5,5,.92);padding:1.5rem}
+.metric strong{display:block;font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.7rem;line-height:1}
+.metric span{font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+.hero-visual{position:relative;z-index:2;min-height:560px;display:flex;align-items:center;justify-content:center}
+.orbit{width:min(36vw,430px);height:min(36vw,430px);border:1px solid var(--line);border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;animation:spin 18s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(214,168,61,.16);border-radius:50%}.orbit:before{inset:42px}.orbit:after{inset:88px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.monogram{animation:spinBack 18s linear infinite;text-align:center}
+@keyframes spinBack{to{transform:rotate(-360deg)}}
+.diamond{width:185px;height:185px;border:2px solid var(--gold);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;box-shadow:0 0 80px rgba(214,168,61,.17)}
+.diamond span{transform:rotate(-45deg);font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:5.5rem}
+.float{
+  position:absolute;background:rgba(18,18,18,.92);border:1px solid var(--line);padding:1rem 1.15rem;border-radius:18px;box-shadow:0 20px 80px rgba(0,0,0,.4);animation:float 4s ease-in-out infinite
+}
+.float small{display:block;color:var(--gold2);letter-spacing:.18em;text-transform:uppercase;font-size:.58rem;font-weight:900}.float b{font-family:Bebas Neue,sans-serif;font-size:1.7rem}.float p{font-size:.72rem;color:var(--muted);margin:.1rem 0 0}
+.f1{top:6%;left:3%}.f2{right:0;top:33%;animation-delay:1s}.f3{left:9%;bottom:6%;animation-delay:2s}
+@keyframes float{50%{transform:translateY(-12px)}}
 
-.ticker{background(--card2);border-block:1px solid var(--line);overflow;padding:1rem 0}
+.ticker{background:var(--card2);border-block:1px solid var(--line);overflow:hidden;padding:1rem 0}
+.ticker div{display:flex;gap:3.5rem;width:max-content;animation:m2 26s linear infinite}
+.ticker span{font-family:Bebas Neue,sans-serif;color:var(--muted);font-size:1rem;letter-spacing:.28em;white-space:nowrap}
+.ticker b{color:var(--gold2)}
+@keyframes m2{to{transform:translateX(-50%)}}
+
+section{padding:7rem 4.5rem;position:relative}
+.eyebrow{color:var(--gold2);font-size:.68rem;font-weight:900;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1rem}
+.title{font-family:Playfair Display,serif;font-size:clamp(2.3rem,4vw,4.2rem);line-height:1.02;letter-spacing:-.04em}
+.title em{color:var(--gold2);font-style:italic;font-weight:500}
+.lead{color:var(--muted);font-size:1rem;line-height:1.8;max-width:720px;margin-top:1rem}
+.services{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);margin-top:3.5rem}
+.card{background:var(--black);padding:2.4rem 1.5rem;position:relative;overflow:hidden;min-height:260px;transition:.3s}
+.card:before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(214,168,61,.12),transparent 55%);opacity:0;transition:.3s}
+.card:hover{transform:translateY(-6px);background:var(--card)}.card:hover:before{opacity:1}
+.icon{width:52px;height:52px;border:1px solid var(--line);display:grid;place-items:center;color:var(--gold2);font-size:1.4rem;margin-bottom:1.3rem;border-radius:16px}
+.card h3{font-family:Playfair Display,serif;font-size:1.22rem;margin-bottom:.75rem;position:relative}
+.card p{color:var(--muted);font-size:.82rem;line-height:1.7;position:relative}
+.price{font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.1rem;margin-top:1.2rem;position:relative}.price small{font-family:Inter;font-size:.65rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+
+.dark{background:var(--black2)}
+.kits{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3.5rem}
+.kit{background:linear-gradient(160deg,rgba(214,168,61,.08),rgba(18,18,18,.9) 45%);border:1px solid var(--line);padding:2.7rem;border-radius:28px;position:relative;overflow:hidden}
+.kit.popular{border-color:var(--gold);box-shadow:0 0 80px rgba(214,168,61,.08);transform:translateY(-10px)}
+.tag{position:absolute;right:1.4rem;top:1.4rem;background:var(--gold);color:#050505;border-radius:999px;padding:.42rem .8rem;font-size:.58rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+.kit h3{font-family:Playfair Display,serif;font-size:1.55rem;margin-bottom:.7rem}.kit p{color:var(--muted);line-height:1.8;font-size:.9rem}.kit .big{font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:4rem;margin:1.4rem 0 .5rem}
+.kit ul{list-style:none;display:grid;gap:.7rem;margin:1.2rem 0}.kit li{color:var(--muted);font-size:.85rem}.kit li:before{content:"✦ ";color:var(--gold2)}
+
+.showcase{display:grid;grid-template-columns:1.2fr .8fr;gap:1px;background:var(--line);margin-top:3.5rem}
+.panel{background:var(--black);padding:3rem;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 60% 30%,rgba(214,168,61,.16),transparent 40%)}
+.panel h3{font-family:Playfair Display,serif;font-size:2.2rem;position:relative}.panel p{color:var(--muted);line-height:1.8;margin-top:1rem;position:relative}
+.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line)}
+.mock{background:var(--card);min-height:210px;display:grid;place-items:center;color:var(--muted);font-family:Bebas Neue,sans-serif;letter-spacing:.2em;position:relative;overflow:hidden}
+.mock:before{content:"";position:absolute;inset:20px;border:1px dashed rgba(214,168,61,.25);border-radius:22px}
+.mock b{color:var(--gold2);font-size:2rem}
+
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3.5rem}
+.step{border:1px solid var(--line);border-radius:24px;padding:2rem;background:rgba(255,255,255,.02)}
+.step b{font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.6rem}.step h3{font-family:Playfair Display,serif;margin:.7rem 0}.step p{color:var(--muted);font-size:.86rem;line-height:1.7}
+
+.testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3.5rem}
+.quote{background:var(--card);border:1px solid var(--line);padding:2rem;border-radius:24px}.quote p{color:var(--muted);line-height:1.75}.quote b{display:block;margin-top:1.3rem;color:var(--gold2)}
+
+.final{
+  text-align:center;background:
+  radial-gradient(circle at 50% 10%,rgba(214,168,61,.22),transparent 34%),
+  linear-gradient(180deg,var(--black2),var(--black));
+}
+.final .title{max-width:900px;margin:auto}.final .lead{margin:1.2rem auto 2.2rem}
+.form{
+  max-width:760px;margin:3rem auto 0;display:grid;gap:1rem;background:rgba(18,18,18,.72);border:1px solid var(--line);padding:1.4rem;border-radius:28px
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+input,select,textarea{width:100%;background:#080808;border:1px solid var(--line);border-radius:16px;padding:1rem;color:var(--white);font-family:Inter;outline:none}
+textarea{min-height:110px;resize:none}input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+.wa-fixed{position:fixed;right:1.6rem;bottom:1.6rem;z-index:800;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;text-decoration:none;box-shadow:0 12px 40px rgba(37,211,102,.38);font-size:1.7rem;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+footer{padding:2.4rem 4.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.8rem}.footlogo{font-family:Bebas Neue;color:var(--gold2);font-size:1.4rem;letter-spacing:.18em}
+
+.reveal{opacity:0;transform:translateY(26px);transition:.7s}.reveal.on{opacity:1;transform:translateY(0)}
+@media(max-width:1050px){
+  nav{padding:1rem 1.4rem}.navlinks{display:none}.hamb{display:flex}.navlinks.open{display:flex;position:fixed;top:5.2rem;left:1rem;right:1rem;flex-direction:column;background:#080808;border:1px solid var(--line);padding:1.5rem;border-radius:22px}
+  .hero{grid-template-columns:1fr;padding:8rem 1.4rem 4rem}.hero-visual{min-height:330px}.orbit{width:290px;height:290px}.float{display:none}
+  section{padding:4.6rem 1.4rem}.services{grid-template-columns:1fr 1fr}.kits,.testimonials{grid-template-columns:1fr}.kit.popular{transform:none}.showcase{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.hero-metrics{grid-template-columns:1fr 1fr}
+  footer{padding:2rem 1.4rem}.form-row{grid-template-columns:1fr}
+}
+@media(max-width:620px){.services,.process,.hero-metrics{grid-template-columns:1fr}h1{font-size:3.45rem}.diamond{width:145px;height:145px}.diamond span{font-size:4.4rem}.mock-grid{grid-template-columns:1fr}}
+
+/* ===== ADM EDITÁVEL ===== */
+.admin-open{
+  position:fixed;left:1.4rem;bottom:1.6rem;z-index:900;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));color:#050505;
+  border:0;border-radius:999px;padding:.85rem 1.1rem;font-weight:900;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 40px rgba(214,168,61,.25)
+}
+.admin-panel{
+  position:fixed;inset:0;z-index:1200;background:rgba(0,0,0,.78);
+  display:none;align-items:center;justify-content:center;padding:1rem
+}
+.admin-panel.open{display:flex}
+.admin-box{
+  width:min(920px,96vw);max-height:92vh;overflow:auto;background:#080808;
+  border:1px solid var(--line);border-radius:26px;padding:1.4rem;color:var(--white);
+  box-shadow:0 30px 120px rgba(0,0,0,.7)
+}
+.admin-box h2{font-family:Playfair Display,serif;margin-bottom:.4rem}
+.admin-box p{color:var(--muted);line-height:1.6;font-size:.9rem;margin-bottom:1rem}
+.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+.admin-field{display:grid;gap:.45rem}
+.admin-field label{font-size:.65rem;color:var(--gold2);letter-spacing:.16em;text-transform:uppercase;font-weight:900}
+.admin-field input,.admin-field textarea{
+  background:#050505;border:1px solid var(--line);border-radius:14px;color:var(--white);
+  padding:.9rem;font-family:Inter;width:100%
+}
+.admin-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
+.admin-btn{
+  border:1px solid var(--line);background:rgba(214,168,61,.08);color:var(--gold2);
+  border-radius:999px;padding:.8rem 1rem;font-weight:900;text-transform:uppercase;
+  letter-spacing:.12em;cursor:pointer;font-size:.72rem
+}
+.admin-btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#050505}
+.admin-btn.red{border-color:rgba(255,61,100,.5);color:#ff8aa0;background:rgba(255,61,100,.08)}
+.admin-close{float:right;background:transparent;border:1px solid var(--line);color:var(--gold2);border-radius:50%;width:38px;height:38px;cursor:pointer}
+body.admin-mode [data-adm-edit]{
+  outline:1px dashed rgba(255,211,106,.55);outline-offset:4px;cursor:text
+}
+body.admin-mode [data-adm-edit]:hover{
+  background:rgba(214,168,61,.08)
+}
+.admin-tip{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:1.5rem;z-index:1300;
+  background:#080808;border:1px solid var(--gold);color:var(--gold2);
+  border-radius:999px;padding:.7rem 1rem;font-size:.75rem;letter-spacing:.08em;display:none
+}
+body.admin-mode .admin-tip{display:block}
+.hero-admin-img{
+  width:min(38vw,520px);max-width:100%;display:none;object-fit:contain;
+  filter:drop-shadow(0 0 42px rgba(214,168,61,.32));animation:float 4s ease-in-out infinite
+}
+.hero-visual.has-admin-img .orbit{display:none}
+.hero-visual.has-admin-img .hero-admin-img{display:block}
+
+/* ===== HERO CARROSSEL ADM ===== */
+.hero-carousel{
+  width:min(38vw,520px);max-width:100%;display:none;position:relative;
+  align-items:center;justify-content:center;overflow:hidden;border-radius:28px;
+}
+.hero-carousel img{
+  width:100%;max-height:560px;object-fit:contain;display:none;
+  filter:drop-shadow(0 0 42px rgba(214,168,61,.32));animation:float 4s ease-in-out infinite;
+}
+.hero-carousel img.active{display:block}
+.hero-visual.has-admin-img .hero-carousel{display:flex}
+.hero-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;border:0;background:transparent;
+  color:var(--gold2);font-size:3.4rem;line-height:1;cursor:pointer;text-shadow:0 4px 18px #000;
+  width:54px;height:74px;display:grid;place-items:center;touch-action:manipulation;
+}
+.hero-arrow.prev{left:.2rem}.hero-arrow.next{right:.2rem}
+.hero-dots{position:absolute;left:0;right:0;bottom:.6rem;display:flex;justify-content:center;gap:.4rem;z-index:6}
+.hero-dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--gold2);background:rgba(0,0,0,.35)}
+.hero-dot.active{background:var(--gold2)}
+@media(max-width:780px){.hero-carousel{width:min(86vw,390px)}.hero-carousel img{max-height:330px}.hero-arrow{font-size:3.9rem;width:64px;height:88px}}
+
+@media(max-width:780px){.admin-grid{grid-template-columns:1fr}.admin-open{left:1rem;bottom:5.2rem}}
+
+
+
+/* ===== MOBILE PREMIUM UPDATE ===== */
+html,body{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+.btn,.admin-btn,.admin-open,.wa-fixed,.hamb{min-height:48px;touch-action:manipulation}
+input,select,textarea{font-size:16px;appearance:none;-webkit-appearance:none}
+img{max-width:100%;height:auto}
+.hamb{width:48px;height:48px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:14px;background:rgba(214,168,61,.06)}
+.hamb span{transition:.25s}.hamb.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamb.active span:nth-child(2){opacity:0}.hamb.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.navlinks.open a{width:100%;text-align:center;padding:.85rem 1rem;border-radius:14px;background:rgba(214,168,61,.05)}
+.hero{width:100%}.hero-actions .btn{width:auto}.card,.kit,.panel,.step,.quote{word-break:normal;overflow-wrap:anywhere}
+.admin-box{-webkit-overflow-scrolling:touch}.admin-close{position:sticky;top:0;z-index:3;background:#080808}
+@media(max-width:1050px){
+  nav{top:1.5rem;padding:.85rem 1rem}.logo{font-size:1.35rem}.navlinks.open{top:4.95rem;max-height:calc(100vh - 6rem);overflow:auto;box-shadow:0 24px 90px rgba(0,0,0,.65)}
+  .hero{padding:7.4rem 1.05rem 3.2rem;gap:1.5rem}.hero p{font-size:.98rem;line-height:1.7}.hero-actions{display:grid;grid-template-columns:1fr;gap:.8rem}.hero-actions .btn{width:100%}.hero-metrics{margin-top:2rem}.metric{padding:1.15rem}.metric strong{font-size:2.25rem}
+  .hero-visual{min-height:260px}.orbit{width:min(72vw,290px);height:min(72vw,290px)}.hero-admin-img{width:min(84vw,380px)}
+  section{padding:4rem 1.05rem}.services{gap:1px}.card{min-height:auto;padding:1.7rem 1.2rem}.kits{gap:1rem}.kit{padding:1.8rem 1.25rem}.showcase{margin-top:2rem}.panel{padding:2rem 1.25rem;min-height:320px}.mock{min-height:160px}.process,.testimonials{gap:.8rem}.form{padding:1rem;border-radius:22px}.wa-fixed{right:1rem;bottom:1rem;width:58px;height:58px}.admin-open{left:1rem;bottom:4.95rem;padding:.75rem .9rem;font-size:.68rem}
+}
+@media(max-width:768px){
+  .marquee-top{font-size:.58rem;padding:.3rem 0}nav{top:1.35rem}.badge{font-size:.58rem;line-height:1.35;padding:.55rem .75rem}.hero{min-height:auto}h1{font-size:clamp(2.55rem,15vw,3.25rem);line-height:.95;letter-spacing:-.045em}.title{font-size:clamp(2rem,10vw,2.8rem)}.lead{font-size:.95rem}.services,.kits,.showcase,.process,.testimonials,.hero-metrics,.form-row{grid-template-columns:1fr}.kit.popular{transform:none}.kit .big{font-size:3.2rem}.float{display:none!important}.ticker{padding:.75rem 0}.ticker span{font-size:.85rem}.admin-panel{align-items:stretch;padding:0}.admin-box{width:100%;height:100dvh;max-height:none;border-radius:0;padding:1rem;padding-bottom:calc(1rem + env(safe-area-inset-bottom))}.admin-grid{grid-template-columns:1fr}.admin-actions{display:grid;grid-template-columns:1fr}.admin-actions .admin-btn{width:100%}footer{display:grid;text-align:center;justify-content:center;padding:2rem 1rem 6rem}
+}
+@media(max-width:390px){
+  .hero{padding-left:.85rem;padding-right:.85rem}h1{font-size:2.35rem}.btn{font-size:.66rem;padding:.9rem 1rem}.card,.kit,.panel,.step,.quote{padding:1.35rem 1rem}.diamond{width:128px;height:128px}.diamond span{font-size:3.9rem}.mock b{font-size:1.55rem}.price{font-size:1.8rem}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
+</style>
+</head>
+<body>
+<div class="marquee-top"><span>🔥 Identidade visual • Flyers • Avatar 3D • Loja Nova • Artes que vendem • WhatsApp direto &nbsp;&nbsp;&nbsp; 🔥 Identidade visual • Flyers • Avatar 3D • Loja Nova • Artes que vendem • WhatsApp direto &nbsp;&nbsp;&nbsp;</span></div>
+
+<nav>
+  <a class="logo" href="#">Hadan<b>.Alves</b></a>
+  <ul class="navlinks" id="navlinks">
+    <li><a href="#servicos">Serviços</a></li><li><a href="#kits">Kits</a></li><li><a href="#portfolio">Portfólio</a></li><li><a href="#processo">Processo</a></li><li><a class="nav-cta" href="#contato">Orçamento</a></li>
+  </ul>
+  <button class="hamb" type="button" aria-label="Abrir menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero">
+  <div class="grid-lines"></div>
+  <div class="hero-content reveal">
+    <div class="badge"><i></i> Design gráfico premium para marcas que querem vender mais</div>
+    <h1>Seu negócio com aparência de <em>marca grande</em>.</h1>
+    <p>Flyers, logos, avatares 3D, pôsteres, edição de fotos e projeto visual para loja. Um visual forte, moderno e preparado para chamar atenção nas redes e no ponto de venda.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" target="_blank" href="https://wa.me/5513991802942?text=Olá%20Hadan!%20Quero%20um%20orçamento%20para%20criar%20uma%20arte%20profissional.">Quero orçamento agora →</a>
+      <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric"><strong>500+</strong><span>clientes atendidos</span></div>
+      <div class="metric"><strong>24h</strong><span>entrega rápida</span></div>
+      <div class="metric"><strong>100%</strong><span>visual profissional</span></div>
+    </div>
+  </div>
+  <div class="hero-visual reveal" id="heroVisual">
+    <div id="heroCarousel" class="hero-carousel" aria-label="Fotos principais do Hero"><img id="heroAdminImage" class="hero-admin-img active" alt="Imagem principal editável"></div>
+    <div class="orbit"><div class="monogram"><div class="diamond"><span>H</span></div></div></div>
+    <div class="float f1"><small>serviço destaque</small><b>Flyer Top</b><p>arte chamativa para vender</p></div>
+    <div class="float f2"><small>contato direto</small><b>WhatsApp</b><p>(13) 99180-2942</p></div>
+    <div class="float f3"><small>projeto especial</small><b>Loja Nova</b><p>visual completo para inaugurar</p></div>
+  </div>
+</header>
+
+<div class="ticker"><div>
+  <span><b>✦</b> EDIÇÃO DE FOTOS</span><span><b>✦</b> FLYERS TOP</span><span><b>✦</b> CRIAÇÃO DE MARCAS</span><span><b>✦</b> PÔSTERES</span><span><b>✦</b> AVATAR 3D</span><span><b>✦</b> PROJETO LOJA NOVA</span>
+  <span><b>✦</b> EDIÇÃO DE FOTOS</span><span><b>✦</b> FLYERS TOP</span><span><b>✦</b> CRIAÇÃO DE MARCAS</span><span><b>✦</b> PÔSTERES</span><span><b>✦</b> AVATAR 3D</span><span><b>✦</b> PROJETO LOJA NOVA</span>
+</div></div>
+
+<section id="servicos">
+  <div class="eyebrow reveal">Especialidades</div>
+  <h2 class="title reveal">Tudo que sua marca precisa para <em>aparecer, encantar e vender</em>.</h2>
+  <p class="lead reveal">Serviços pensados para empreendedores, lojas, perfis comerciais e criadores que precisam de artes bonitas, objetivas e com cara profissional.</p>
+  <div class="services reveal">
+    <div class="card"><div class="icon">✦</div><h3>Edição de Fotos</h3><p>Correção de luz, cores, nitidez, remoção de fundo e acabamento profissional.</p><div class="price">R$15 <small>por foto</small></div></div>
+    <div class="card"><div class="icon">⚡</div><h3>Flyer Top</h3><p>Arte impactante para promoção, divulgação, lançamento, campanha e redes sociais.</p><div class="price">R$40 <small>por flyer</small></div></div>
+    <div class="card"><div class="icon">◆</div><h3>Criação de Marca</h3><p>Logo exclusiva, conceito visual, versões para redes sociais e impressão.</p><div class="price">R$150 <small>por marca</small></div></div>
+    <div class="card"><div class="icon">▣</div><h3>Pôster Profissional</h3><p>Design moderno, chamativo e pronto para divulgação digital ou impressa.</p><div class="price">R$60 <small>por pôster</small></div></div>
+    <div class="card"><div class="icon">☻</div><h3>Avatar 3D</h3><p>Avatar personalizado estilo cartoon para perfil, loja, marca ou campanha.</p><div class="price">R$50 <small>por avatar</small></div></div>
+  </div>
+</section>
+
+<section class="dark" id="kits">
+  <div class="eyebrow reveal">Kits promocionais</div>
+  <h2 class="title reveal">Pacotes prontos para começar com <em>impacto</em>.</h2>
+  <div class="kits reveal">
+    <div class="kit"><h3>Kit Básico</h3><p>Ideal para quem quer divulgar rápido com uma arte forte e avatar profissional.</p><div class="big">R$80</div><ul><li>1 Flyer Top</li><li>1 Avatar 3D</li><li>Entrega rápida</li></ul><a class="btn btn-ghost" target="_blank" href="https://wa.me/5513991802942?text=Olá!%20Quero%20o%20Kit%20Básico.">Pedir kit</a></div>
+    <div class="kit popular"><span class="tag">mais pedido</span><h3>Kit Empreendedor</h3><p>Perfeito para loja, página comercial ou marca que está começando.</p><div class="big">R$160</div><ul><li>1 Flyer Top</li><li>1 Logo profissional</li><li>Visual para redes sociais</li></ul><a class="btn btn-gold" target="_blank" href="https://wa.me/5513991802942?text=Olá!%20Quero%20o%20Kit%20Empreendedor.">Quero esse</a></div>
+    <div class="kit"><h3>Kit Completo</h3><p>O pacote mais completo para deixar sua marca pronta para divulgar.</p><div class="big">R$240</div><ul><li>1 Flyer + 1 Logo</li><li>1 Avatar + 1 Pôster</li><li>Arquivos em alta resolução</li></ul><a class="btn btn-ghost" target="_blank" href="https://wa.me/5513991802942?text=Olá!%20Quero%20o%20Kit%20Completo.">Pedir kit</a></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="eyebrow reveal">Portfólio visual</div>
+  <h2 class="title reveal">Uma vitrine com cara de <em>agência premium</em>.</h2>
+  <p class="lead reveal">Espaço preparado para inserir artes reais, cases, logos, flyers, avatares e campanhas.</p>
+  <div class="showcase reveal">
+    <div class="panel">
+      <h3>Campanhas que chamam atenção no primeiro olhar.</h3>
+      <p>Use esta área para destacar o principal projeto, campanha de venda, avatar ou arte comemorativa.</p>
+    </div>
+    <div class="mock-grid">
+      <div class="mock"><b>FLYER</b></div><div class="mock"><b>LOGO</b></div><div class="mock"><b>AVATAR</b></div><div class="mock"><b>POSTER</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="processo">
+  <div class="eyebrow reveal">Como funciona</div>
+  <h2 class="title reveal">Atendimento simples, rápido e <em>sem enrolação</em>.</h2>
+  <div class="process reveal">
+    <div class="step"><b>01</b><h3>Chamada</h3><p>Você chama no WhatsApp e explica o que precisa criar.</p></div>
+    <div class="step"><b>02</b><h3>Briefing</h3><p>Definimos estilo, objetivo, cores, texto e referências.</p></div>
+    <div class="step"><b>03</b><h3>Criação</h3><p>A arte é desenvolvida com visual profissional e foco em resultado.</p></div>
+    <div class="step"><b>04</b><h3>Entrega</h3><p>Você recebe os arquivos em alta qualidade, prontos para uso.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow reveal">Prova social</div>
+  <h2 class="title reveal">Clientes lembram de quem entrega <em>qualidade</em>.</h2>
+  <div class="testimonials reveal">
+    <div class="quote"><p>“Minha divulgação ficou muito mais profissional. A arte chamou atenção e deixou minha loja com outro nível.”</p><b>Cliente de loja</b></div>
+    <div class="quote"><p>“Entrega rápida, visual bonito e atendimento fácil. Já quero fechar outros materiais.”</p><b>Empreendedora</b></div>
+    <div class="quote"><p>“O avatar ficou com cara de marca, perfeito para Instagram e campanhas.”</p><b>Criador digital</b></div>
+  </div>
+</section>
+
+<section class="final" id="contato">
+  <div class="eyebrow reveal">Orçamento rápido</div>
+  <h2 class="title reveal">Pronto para deixar sua marca <em>inesquecível</em>?</h2>
+  <p class="lead reveal">Preencha abaixo e seja direcionado automaticamente para o WhatsApp com sua solicitação pronta.</p>
+  <form class="form reveal" onsubmit="sendWA(event)">
+    <div class="form-row">
+      <input id="nome" required placeholder="Seu nome">
+      <input id="whats" required placeholder="Seu WhatsApp">
+    </div>
+    <select id="servico" required>
+      <option value="">Selecione o serviço</option>
+      <option>Edição de Fotos</option><option>Flyer Top</option><option>Criação de Marca</option><option>Pôster Profissional</option><option>Avatar 3D</option><option>Kit Básico</option><option>Kit Empreendedor</option><option>Kit Completo</option><option>Projeto Loja Nova</option>
+    </select>
+    <textarea id="msg" placeholder="Conte rapidamente o que você precisa..."></textarea>
+    <button class="btn btn-gold" type="submit">Enviar para WhatsApp →</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footlogo">HADAN ALVES</div>
+  <div>© 2026 Hadan Alves — Design Gráfico Premium</div>
+  <div>Instagram • WhatsApp • Portfólio</div>
+</footer>
+
+<a class="wa-fixed" target="_blank" title="Falar no WhatsApp" href="https://wa.me/5513991802942?text=Olá%20Hadan!%20Quero%20um%20orçamento.">☏</a>
+
+
+<button class="admin-open" onclick="openAdmin()">ADM</button>
+
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-box">
+    <button class="admin-close" onclick="closeAdmin()">×</button>
+    <h2>Painel ADM</h2>
+    <p>Senha padrão: <strong>admin123</strong>. Após entrar, use o Editor completo do site para alterar textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos.</p>
+
+    <div id="adminLogin">
+      <div class="admin-field">
+        <label>Senha de acesso</label>
+        <input type="password" id="adminPass" placeholder="Digite a senha">
+      </div>
+      <div class="admin-actions">
+        <button class="admin-btn gold" onclick="loginAdmin()">Entrar no ADM</button>
+      </div>
+    </div>
+
+    <div id="adminControls" style="display:none">
+      <div class="admin-actions">
+        <button class="admin-btn gold" onclick="toggleEditMode()">Ativar/desativar edição</button>
+        <button class="admin-btn" onclick="saveAll()">Salvar alterações</button>
+        <button class="admin-btn red" onclick="resetSite()">Resetar site</button>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-field">
+          <label>Número do WhatsApp</label>
+          <input id="admWhatsapp" placeholder="Ex: 5513991802942">
+        </div>
+        <div class="admin-field">
+          <label>Mensagem padrão WhatsApp</label>
+          <input id="admWAMsg" placeholder="Olá! Quero um orçamento.">
+        </div>
+        <div class="admin-field">
+          <label>Cor dourada principal</label>
+          <input id="admGold" type="color" value="#d6a83d">
+        </div>
+        <div class="admin-field">
+          <label>Cor dourada clara</label>
+          <input id="admGold2" type="color" value="#ffd36a">
+        </div>
+        <div class="admin-field">
+          <label>Imagem/avatar principal por URL</label>
+          <input id="admHeroUrl" placeholder="Cole a URL da imagem">
+        </div>
+        <div class="admin-field">
+          <label>Ou carregar imagem/avatar do computador</label>
+          <input id="admHeroFile" type="file" accept="image/*">
+        </div>
+        <div class="admin-field">
+          <label>Título da página</label>
+          <input id="admTitle" placeholder="Título da aba do navegador">
+        </div>
+        <div class="admin-field">
+          <label>Senha ADM nova</label>
+          <input id="admNewPass" placeholder="Digite uma nova senha">
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button class="admin-btn gold" onclick="applyAdminSettings()">Aplicar configurações</button>
+        <button class="admin-btn" onclick="downloadEditedHTML()">Baixar HTML editado</button>
+        <button class="admin-btn red" onclick="logoutAdmin()">Sair do ADM</button>
+      </div>
+
+      <p style="margin-top:1rem">Dica: com a edição ativada, clique em títulos, descrições, preços, depoimentos, botões e rodapé para alterar o texto direto na página.</p>
+    </div>
+  </div>
+</div>
+
+<div class="admin-tip">Modo edição ativo — clique nos textos para alterar e depois salve.</div>
+
+<script>
+function toggleMenu(){
+  const nav=document.getElementById('navlinks');
+  const hamb=document.querySelector('.hamb');
+  nav.classList.toggle('open');
+  hamb && hamb.classList.toggle('active', nav.classList.contains('open'));
+}
+document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>{document.getElementById('navlinks').classList.remove('open');document.querySelector('.hamb')?.classList.remove('active')});
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);obs.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function sendWA(e){
+  e.preventDefault();
+  const nome=document.getElementById('nome').value.trim();
+  const whats=document.getElementById('whats').value.trim();
+  const servico=document.getElementById('servico').value;
+  const msg=document.getElementById('msg').value.trim();
+  const texto=encodeURIComponent(`Olá Hadan! Quero um orçamento.\n\nNome: ${nome}\nWhatsApp: ${whats}\nServiço: ${servico}\nMensagem: ${msg}`);
+  window.open(`https://wa.me/5513991802942?text=${texto}`,'_blank');
+}
+
+/* ===== SCRIPT ADM ===== */
+const ADM_KEYS = {
+  html:'hadan_site_saved_html_v1',
+  settings:'hadan_site_settings_v1',
+  pass:'hadan_site_admin_pass_v1'
+};
+
+function admPassword(){
+  return localStorage.getItem(ADM_KEYS.pass) || 'admin123';
+}
+
+function openAdmin(){
+  document.getElementById('adminPanel').classList.add('open');
+}
+function closeAdmin(){
+  document.getElementById('adminPanel').classList.remove('open');
+}
+function loginAdmin(){
+  const pass = document.getElementById('adminPass').value;
+  if(pass !== admPassword()){
+    alert('Senha incorreta.');
+    return;
+  }
+  document.getElementById('adminLogin').style.display='none';
+  document.getElementById('adminControls').style.display='block';
+  loadSettingsToPanel();
+}
+function logoutAdmin(){
+  document.body.classList.remove('admin-mode');
+  document.getElementById('adminLogin').style.display='block';
+  document.getElementById('adminControls').style.display='none';
+  document.getElementById('adminPass').value='';
+  closeAdmin();
+}
+function markEditable(){
+  const selectors = [
+    '.marquee-top span','.logo','.navlinks a','.badge','h1','.hero p','.btn',
+    '.metric strong','.metric span','.float small','.float b','.float p',
+    '.ticker span','.eyebrow','.title','.lead','.card h3','.card p','.price',
+    '.kit h3','.kit p','.kit .big','.kit li','.tag','.panel h3','.panel p',
+    '.mock b','.step h3','.step p','.quote p','.quote b','footer div','.footlogo'
+  ];
+  document.querySelectorAll(selectors.join(',')).forEach((el,idx)=>{
+    if(!el.id) el.dataset.admId = el.dataset.admId || ('adm_'+idx);
+    el.setAttribute('data-adm-edit','true');
+  });
+}
+function toggleEditMode(){
+  markEditable();
+  document.body.classList.toggle('admin-mode');
+  const editing = document.body.classList.contains('admin-mode');
+  document.querySelectorAll('[data-adm-edit]').forEach(el=>{
+    el.contentEditable = editing ? 'true' : 'false';
+  });
+}
+function saveAll(){
+  const data = {};
+  document.querySelectorAll('[data-adm-edit]').forEach((el,idx)=>{
+    const key = el.dataset.admId || ('adm_'+idx);
+    el.dataset.admId = key;
+    data[key] = el.innerHTML;
+  });
+  localStorage.setItem(ADM_KEYS.html, JSON.stringify(data));
+  applyAdminSettings();
+  alert('Alterações salvas com sucesso.');
+}
+function loadSavedText(){
+  markEditable();
+  const raw = localStorage.getItem(ADM_KEYS.html);
+  if(!raw) return;
+  try{
+    const data = JSON.parse(raw);
+    document.querySelectorAll('[data-adm-edit]').forEach((el,idx)=>{
+      const key = el.dataset.admId || ('adm_'+idx);
+      if(data[key] !== undefined) el.innerHTML = data[key];
+    });
+  }catch(e){}
+}
+function applyAdminSettings(){
+  const settings = {
+    whatsapp: document.getElementById('admWhatsapp').value.trim() || '5513991802942',
+    waMsg: document.getElementById('admWAMsg').value.trim() || 'Olá Hadan! Quero um orçamento.',
+    gold: document.getElementById('admGold').value || '#d6a83d',
+    gold2: document.getElementById('admGold2').value || '#ffd36a',
+    heroUrl: document.getElementById('admHeroUrl').value.trim(),
+    title: document.getElementById('admTitle').value.trim() || document.title
+  };
+  const newPass = document.getElementById('admNewPass').value.trim();
+  if(newPass) localStorage.setItem(ADM_KEYS.pass, newPass);
+
+  localStorage.setItem(ADM_KEYS.settings, JSON.stringify(settings));
+  applySettings(settings);
+  alert('Configurações aplicadas.');
+}
+function applySettings(settings){
+  document.documentElement.style.setProperty('--gold', settings.gold || '#d6a83d');
+  document.documentElement.style.setProperty('--gold2', settings.gold2 || '#ffd36a');
+  if(settings.title) document.title = settings.title;
+
+  const phone = settings.whatsapp || '5513991802942';
+  const msg = encodeURIComponent(settings.waMsg || 'Olá Hadan! Quero um orçamento.');
+  document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{
+    a.href = `https://wa.me/${phone}?text=${msg}`;
+  });
+
+  const img = document.getElementById('heroAdminImage');
+  const visual = document.getElementById('heroVisual');
+  const carousel = document.getElementById('heroCarousel');
+  if(settings.heroUrl){
+    if(img){
+      img.src = settings.heroUrl;
+    }else if(carousel){
+      carousel.innerHTML = `<img id="heroAdminImage" class="hero-admin-img active" src="${settings.heroUrl}" alt="Imagem principal editável" loading="lazy" decoding="async">`;
+    }
+    visual?.classList.add('has-admin-img');
+  }else{
+    if(img) img.removeAttribute('src');
+    visual?.classList.remove('has-admin-img');
+  }
+}
+function loadSettingsToPanel(){
+  const settings = JSON.parse(localStorage.getItem(ADM_KEYS.settings) || '{}');
+  document.getElementById('admWhatsapp').value = settings.whatsapp || '5513991802942';
+  document.getElementById('admWAMsg').value = settings.waMsg || 'Olá Hadan! Quero um orçamento.';
+  document.getElementById('admGold').value = settings.gold || '#d6a83d';
+  document.getElementById('admGold2').value = settings.gold2 || '#ffd36a';
+  document.getElementById('admHeroUrl').value = settings.heroUrl || '';
+  document.getElementById('admTitle').value = settings.title || document.title;
+}
+function loadSettings(){
+  const settings = JSON.parse(localStorage.getItem(ADM_KEYS.settings) || '{}');
+  if(Object.keys(settings).length) applySettings(settings);
+}
+function resetSite(){
+  if(!confirm('Deseja apagar todas as alterações salvas neste navegador?')) return;
+  localStorage.removeItem(ADM_KEYS.html);
+  localStorage.removeItem(ADM_KEYS.settings);
+  location.reload();
+}
+function downloadEditedHTML(){
+  saveAll();
+  let doc = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([doc], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'site-hadan-editado.html';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+document.addEventListener('click', function(e){
+  if(!document.body.classList.contains('admin-mode')) return;
+  const a = e.target.closest('a');
+  if(a && a.hasAttribute('data-adm-edit')){
+    e.preventDefault();
+  }
+}, true);
+document.getElementById('admHeroFile')?.addEventListener('change', function(){
+  const file = this.files && this.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    document.getElementById('admHeroUrl').value = ev.target.result;
+    if(typeof applyAdminSettings === 'function') applyAdminSettings();
+  };
+  reader.readAsDataURL(file);
+});
+
+
+/* ===== FUNÇÕES MOBILE EXTRAS ===== */
+document.addEventListener('click', function(e){
+  const nav=document.getElementById('navlinks');
+  const hamb=document.querySelector('.hamb');
+  if(nav && hamb && nav.classList.contains('open') && !nav.contains(e.target) && !hamb.contains(e.target)){
+    nav.classList.remove('open');
+    hamb.classList.remove('active');
+  }
+});
+window.addEventListener('resize', function(){
+  const nav=document.getElementById('navlinks');
+  const hamb=document.querySelector('.hamb');
+  if(window.innerWidth > 1050 && nav){nav.classList.remove('open');hamb?.classList.remove('active')}
+});
+document.querySelectorAll('img').forEach(img=>{img.loading='lazy';img.decoding='async'});
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  markEditable();
+  loadSavedText();
+  loadSettings();
+});
+
+/* ===== ADM UNIVERSAL — TEXTOS, LINKS, FOTOS, FORMULÁRIO E VALORES ===== */
+(function(){
+  const UKEY = 'hadan_universal_admin_v3';
+  const PASSKEY = 'hadan_site_admin_pass_v1';
+  const DEFAULT_PHONE = '5513991802942';
+  const DEFAULT_MSG = 'Olá Hadan! Quero um orçamento.';
+
+  const qsa = (s, root=document) => Array.from(root.querySelectorAll(s));
+  const esc = (v='') => String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  const fileToDataURL = file => new Promise(resolve => {
+    // Converte e comprime a foto antes de salvar/aplicar.
+    // Isso evita erro de localStorage quando o ADM envia fotos grandes do celular.
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        const maxSide = 1400;
+        let w = img.naturalWidth || img.width;
+        let h = img.naturalHeight || img.height;
+        if(w > maxSide || h > maxSide){
+          const scale = Math.min(maxSide / w, maxSide / h);
+          w = Math.round(w * scale);
+          h = Math.round(h * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', 0.86));
+      };
+      img.onerror = function(){ resolve(e.target.result); };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  const textSelectors = [
+    '.marquee-top span','.logo','.navlinks a','.badge','h1','.hero p','.btn',
+    '.metric strong','.metric span','.float small','.float b','.float p',
+    '.ticker span','.eyebrow','.title','.lead','.card h3','.card p','.price',
+    '.kit h3','.kit p','.kit .big','.kit li','.tag','.panel h3','.panel p',
+    '.mock b','.step h3','.step p','.quote p','.quote b','footer div','.footlogo',
+    'option'
+  ];
+
+  const imageSlots = [
+    {key:'hero', label:'Fotos do Hero / avatar principal (2 ou mais fotos)', selector:'#heroCarousel', kind:'heroCarousel'},
+    {key:'portfolio_principal', label:'Foto principal do Portfólio', selector:'.panel', kind:'background'},
+    {key:'portfolio_1', label:'Portfólio 1', selector:'.mock:nth-child(1)', kind:'background'},
+    {key:'portfolio_2', label:'Portfólio 2', selector:'.mock:nth-child(2)', kind:'background'},
+    {key:'portfolio_3', label:'Portfólio 3', selector:'.mock:nth-child(3)', kind:'background'},
+    {key:'portfolio_4', label:'Portfólio 4', selector:'.mock:nth-child(4)', kind:'background'}
+  ];
+
+  function getStore(){ try{return JSON.parse(localStorage.getItem(UKEY)||'{}')}catch(e){return {}} }
+  function setStore(data){ localStorage.setItem(UKEY, JSON.stringify(data)); }
+  function stableKey(el, prefix, index){
+    if(!el.dataset.adminKey){
+      const label = (el.id || el.className || el.tagName || prefix).toString().replace(/\s+/g,'_').slice(0,35);
+      el.dataset.adminKey = `${prefix}_${index}_${label}`;
+    }
+    return el.dataset.adminKey;
+  }
+
+  function collectTextElements(){
+    const found = [];
+    qsa(textSelectors.join(',')).forEach((el, i)=>{
+      if(el.closest('.admin-panel') || el.closest('script') || el.closest('style')) return;
+      if(!el.textContent.trim() && el.tagName !== 'OPTION') return;
+      const key = stableKey(el, 'txt', found.length);
+      found.push({el, key, label: `${el.tagName.toLowerCase()} ${el.id ? '#'+el.id : ''} ${el.className ? '.'+String(el.className).replace(/\s+/g,'.') : ''}`.trim()});
+    });
+    return found;
+  }
+
+  function collectLinks(){
+    const arr=[];
+    qsa('a[href]').forEach((el)=>{
+      if(el.closest('.admin-panel')) return;
+      const key = stableKey(el, 'link', arr.length);
+      arr.push({el, key, label: el.textContent.trim() || el.title || el.href});
+    });
+    return arr;
+  }
+
+  function collectFields(){
+    const arr=[];
+    qsa('input, textarea, select').forEach((el)=>{
+      if(el.closest('.admin-panel')) return;
+      const key = stableKey(el, 'field', arr.length);
+      arr.push({el, key, label: el.placeholder || el.id || el.name || el.tagName});
+    });
+    return arr;
+  }
+
+  function parseImageList(value){
+    if(Array.isArray(value)) return value.filter(Boolean);
+    return String(value || '').split(/\n|,/).map(v=>v.trim()).filter(Boolean);
+  }
+
+  function showHeroSlide(index){
+    const carousel = document.getElementById('heroCarousel');
+    if(!carousel) return;
+    const imgs = Array.from(carousel.querySelectorAll('img'));
+    const dots = Array.from(carousel.querySelectorAll('.hero-dot'));
+    if(!imgs.length) return;
+    const current = ((index % imgs.length) + imgs.length) % imgs.length;
+    carousel.dataset.index = String(current);
+    imgs.forEach((img,i)=>img.classList.toggle('active', i===current));
+    dots.forEach((dot,i)=>dot.classList.toggle('active', i===current));
+  }
+  window.showHeroSlide = showHeroSlide;
+  window.nextHeroSlide = function(step){
+    const carousel = document.getElementById('heroCarousel');
+    const current = Number(carousel?.dataset.index || 0);
+    showHeroSlide(current + step);
+  };
+
+  function applyImage(slot, url){
+    const el = document.querySelector(slot.selector);
+    if(!el) return;
+    if(slot.kind === 'heroCarousel'){
+      const urls = parseImageList(url);
+      const visual = document.getElementById('heroVisual');
+      if(urls.length){
+        el.innerHTML = urls.map((src,i)=>`<img class="hero-admin-img ${i===0?'active':''}" src="${esc(src)}" alt="Imagem principal ${i+1}" loading="lazy" decoding="async">`).join('') +
+          (urls.length > 1 ? `<button class="hero-arrow prev" type="button" onclick="nextHeroSlide(-1)" aria-label="Foto anterior">‹</button><button class="hero-arrow next" type="button" onclick="nextHeroSlide(1)" aria-label="Próxima foto">›</button><div class="hero-dots">${urls.map((_,i)=>`<button class="hero-dot ${i===0?'active':''}" type="button" onclick="showHeroSlide(${i})" aria-label="Ir para foto ${i+1}"></button>`).join('')}</div>` : '');
+        el.dataset.index = '0';
+        visual?.classList.add('has-admin-img');
+        enableHeroSwipe();
+      }else{
+        el.innerHTML = '<img id="heroAdminImage" class="hero-admin-img active" alt="Imagem principal editável">';
+        visual?.classList.remove('has-admin-img');
+      }
+      return;
+    }
+    if(slot.kind === 'img'){
+      if(url){
+        el.src = url;
+        document.getElementById('heroVisual')?.classList.add('has-admin-img');
+      }else{
+        el.removeAttribute('src');
+        document.getElementById('heroVisual')?.classList.remove('has-admin-img');
+      }
+    }else{
+      el.classList.add('adm-photo-slot');
+      if(url){
+        el.style.backgroundImage = `linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.62)), url('${url}')`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+      }else{
+        el.style.backgroundImage = '';
+      }
+    }
+  }
+
+  function enableHeroSwipe(){
+    const carousel = document.getElementById('heroCarousel');
+    if(!carousel || carousel.dataset.swipeReady) return;
+    carousel.dataset.swipeReady = '1';
+    let startX = 0;
+    carousel.addEventListener('touchstart', e=>{startX = e.touches[0].clientX;}, {passive:true});
+    carousel.addEventListener('touchend', e=>{
+      const dx = e.changedTouches[0].clientX - startX;
+      if(Math.abs(dx) > 45) window.nextHeroSlide(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  }
+
+  function applyDataToSite(data){
+    data = data || {};
+    collectTextElements().forEach(item=>{
+      if(data.texts && Object.prototype.hasOwnProperty.call(data.texts, item.key)) item.el.innerHTML = data.texts[item.key];
+    });
+    collectLinks().forEach(item=>{
+      if(data.links && Object.prototype.hasOwnProperty.call(data.links, item.key)) item.el.setAttribute('href', data.links[item.key]);
+    });
+    collectFields().forEach(item=>{
+      const v = data.fields && data.fields[item.key];
+      if(!v) return;
+      if(v.placeholder !== undefined) item.el.placeholder = v.placeholder;
+      if(item.el.tagName === 'SELECT' && v.options !== undefined){
+        item.el.innerHTML = String(v.options).split('\n').map(line=>line.trim()).filter(Boolean).map((line,idx)=>`<option value="${esc(idx===0 && line.toLowerCase().includes('selecione') ? '' : line)}">${esc(line)}</option>`).join('');
+      }
+    });
+    if(data.images){ imageSlots.forEach(slot=>applyImage(slot, data.images[slot.key] || '')); }
+    if(data.settings){
+      document.title = data.settings.title || document.title;
+      document.documentElement.style.setProperty('--gold', data.settings.gold || '#d6a83d');
+      document.documentElement.style.setProperty('--gold2', data.settings.gold2 || '#ffd36a');
+      updateWhatsapp(data.settings.phone || DEFAULT_PHONE, data.settings.waMsg || DEFAULT_MSG);
+    }
+  }
+
+  function applyStore(){
+    applyDataToSite(getStore());
+  }
+
+  function updateWhatsapp(phone, msg){
+    const encoded = encodeURIComponent(msg || DEFAULT_MSG);
+    qsa('a[href*="wa.me"]').forEach(a=> a.href = `https://wa.me/${phone || DEFAULT_PHONE}?text=${encoded}`);
+  }
+
+  window.sendWA = function(e){
+    e.preventDefault();
+    const data = getStore();
+    const phone = data.settings?.phone || localStorage.getItem('adm_phone') || DEFAULT_PHONE;
+    const nome=document.getElementById('nome')?.value.trim() || '';
+    const whats=document.getElementById('whats')?.value.trim() || '';
+    const servico=document.getElementById('servico')?.value || '';
+    const msg=document.getElementById('msg')?.value.trim() || '';
+    const texto=encodeURIComponent(`Olá! Quero um orçamento.\n\nNome: ${nome}\nWhatsApp: ${whats}\nServiço: ${servico}\nMensagem: ${msg}`);
+    window.open(`https://wa.me/${phone}?text=${texto}`,'_blank');
+  };
+
+  function renderUniversalAdmin(){
+    const controls = document.getElementById('adminControls');
+    if(!controls || document.getElementById('universalAdmin')) return;
+    const data = getStore();
+    const texts = collectTextElements();
+    const links = collectLinks();
+    const fields = collectFields();
+    const html = `
+      <div id="universalAdmin" class="universal-admin">
+        <h3>Editor completo do site</h3>
+        <p>Edite todos os textos, valores, serviços, kits, portfólio, links, formulário, WhatsApp e fotos. Depois clique em <b>Aplicar sem salvar</b> para testar ou <b>Salvar tudo</b> para gravar.</p>
+        <div class="ua-actions">
+          <button class="admin-btn gold" id="uaSaveBtn" type="button">Salvar tudo</button>
+          <button class="admin-btn" id="uaApplyBtn" type="button">Aplicar sem salvar</button>
+          <button class="admin-btn" id="uaDownloadBtn" type="button">Baixar HTML final</button>
+        </div>
+        <div id="uaStatus" class="ua-status" aria-live="polite"></div>
+        <details open><summary>Configurações principais</summary>
+          <div class="ua-grid">
+            <label>Título da aba<input id="ua_title" value="${esc(data.settings?.title || document.title)}"></label>
+            <label>WhatsApp<input id="ua_phone" value="${esc(data.settings?.phone || DEFAULT_PHONE)}"></label>
+            <label>Mensagem padrão WhatsApp<input id="ua_msg" value="${esc(data.settings?.waMsg || DEFAULT_MSG)}"></label>
+            <label>Nova senha ADM<input id="ua_pass" type="password" placeholder="Preencha somente se quiser trocar"></label>
+            <label>Cor principal<input id="ua_gold" type="color" value="${esc(data.settings?.gold || '#d6a83d')}"></label>
+            <label>Cor clara<input id="ua_gold2" type="color" value="${esc(data.settings?.gold2 || '#ffd36a')}"></label>
+          </div>
+        </details>
+        <details><summary>Fotos e imagens</summary>
+          <div class="ua-grid">
+            ${imageSlots.map(slot=> slot.kind === 'heroCarousel' ? `<label>${esc(slot.label)}<textarea class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole uma URL por linha ou envie várias fotos abaixo">${esc(data.images?.[slot.key] || '')}</textarea><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*" multiple><small>Para o Hero, envie 2 ou mais fotos. As setas e o arrastar no celular serão ativados automaticamente.</small></label>` : `<label>${esc(slot.label)}<input class="ua-img-url" data-img-key="${slot.key}" placeholder="Cole a URL da imagem" value="${esc(data.images?.[slot.key] || '')}"><input class="ua-img-file" data-img-key="${slot.key}" type="file" accept="image/*"></label>`).join('')}
+          </div>
+        </details>
+        <details><summary>Textos, valores, serviços, kits e portfólio</summary>
+          <div class="ua-list">
+            ${texts.map(item=>`<label><span>${esc(item.label)}</span><textarea data-text-key="${item.key}">${esc(data.texts?.[item.key] ?? item.el.innerHTML)}</textarea></label>`).join('')}
+          </div>
+        </details>
+        <details><summary>Links e botões</summary>
+          <div class="ua-list">
+            ${links.map(item=>`<label><span>${esc(item.label)}</span><input data-link-key="${item.key}" value="${esc(data.links?.[item.key] ?? item.el.getAttribute('href'))}"></label>`).join('')}
+          </div>
+        </details>
+        <details><summary>Campos do formulário</summary>
+          <div class="ua-list">
+            ${fields.map(item=>`<label><span>${esc(item.label)}</span><input data-field-key="${item.key}" data-field-part="placeholder" value="${esc(data.fields?.[item.key]?.placeholder ?? item.el.placeholder ?? '')}" placeholder="Placeholder do campo">${item.el.tagName==='SELECT'?`<textarea data-field-key="${item.key}" data-field-part="options" placeholder="Uma opção por linha">${esc(data.fields?.[item.key]?.options ?? qsa('option', item.el).map(o=>o.textContent).join('\n'))}</textarea>`:''}</label>`).join('')}
+          </div>
+        </details>
+      </div>`;
+    controls.insertAdjacentHTML('beforeend', html);
+
+    qsa('.ua-img-file', controls).forEach(input=>{
+      input.addEventListener('change', async function(){
+        const files = Array.from(this.files || []);
+        if(!files.length) return;
+        setStatus('Carregando foto(s)...');
+        try{
+          const urls = await Promise.all(files.map(fileToDataURL));
+          const key = this.dataset.imgKey;
+          const urlInput = controls.querySelector(`.ua-img-url[data-img-key="${key}"]`);
+          if(urlInput){
+            if(key === 'hero'){
+              // No Hero, várias fotos são permitidas. O upload substitui a lista atual,
+              // evitando misturar fotos antigas sem querer. O usuário ainda pode colar URLs linha por linha.
+              urlInput.value = urls.filter(Boolean).join('\n');
+            }else{
+              urlInput.value = urls[0] || '';
+            }
+            urlInput.dispatchEvent(new Event('input', {bubbles:true}));
+          }
+          window.applyUniversalAdminNow?.();
+          setStatus('Foto(s) aplicada(s) na página. Clique em Salvar tudo para gravar.');
+        }catch(err){
+          console.error(err);
+          alert('Não foi possível carregar a foto. Tente uma imagem menor ou em JPG/PNG.');
+          setStatus('Erro ao carregar foto.');
+        }finally{
+          this.value = '';
+        }
+      });
+    });
+    qsa('.ua-img-url', controls).forEach(input=>{
+      input.addEventListener('input', ()=>window.applyUniversalAdminNow?.());
+      input.addEventListener('change', ()=>window.applyUniversalAdminNow?.());
+    });
+
+    document.getElementById('uaSaveBtn')?.addEventListener('click', window.saveUniversalAdmin);
+    document.getElementById('uaApplyBtn')?.addEventListener('click', window.applyUniversalAdminNow);
+    document.getElementById('uaDownloadBtn')?.addEventListener('click', window.downloadFullEditedHTML);
+  }
+
+  function setStatus(msg){
+    const el = document.getElementById('uaStatus');
+    if(!el) return;
+    el.textContent = msg;
+    window.clearTimeout(setStatus._t);
+    setStatus._t = window.setTimeout(()=>{ el.textContent=''; }, 3500);
+  }
+
+  function readUniversalAdminData(){
+    const root = document.getElementById('universalAdmin');
+    if(!root) return null;
+    const data = {settings:{}, texts:{}, links:{}, fields:{}, images:{}};
+    data.settings.title = document.getElementById('ua_title')?.value || document.title;
+    data.settings.phone = (document.getElementById('ua_phone')?.value || DEFAULT_PHONE).replace(/\D/g,'') || DEFAULT_PHONE;
+    data.settings.waMsg = document.getElementById('ua_msg')?.value || DEFAULT_MSG;
+    data.settings.gold = document.getElementById('ua_gold')?.value || '#d6a83d';
+    data.settings.gold2 = document.getElementById('ua_gold2')?.value || '#ffd36a';
+    const newPass = document.getElementById('ua_pass')?.value.trim();
+    if(newPass) localStorage.setItem(PASSKEY, newPass);
+    qsa('[data-text-key]', root).forEach(el=> data.texts[el.dataset.textKey] = el.value);
+    qsa('[data-link-key]', root).forEach(el=> data.links[el.dataset.linkKey] = el.value);
+    qsa('[data-field-key]', root).forEach(el=>{
+      const k=el.dataset.fieldKey, p=el.dataset.fieldPart;
+      data.fields[k] = data.fields[k] || {};
+      data.fields[k][p] = el.value;
+    });
+    qsa('[data-img-key].ua-img-url', root).forEach(el=> data.images[el.dataset.imgKey] = el.value);
+    return data;
+  }
+
+  window.applyUniversalAdminNow = function(){
+    const data = readUniversalAdminData();
+    if(!data) return;
+    applyDataToSite(data);
+    setStatus('Alterações aplicadas na tela. Para manter após atualizar a página, clique em Salvar tudo.');
+  };
+
+  window.saveUniversalAdmin = function(){
+    const data = readUniversalAdminData();
+    if(!data) return;
+    try{
+      setStore(data);
+      applyDataToSite(data);
+      setStatus('Tudo salvo com sucesso neste navegador.');
+      alert('Tudo salvo com sucesso. Para publicar no GitHub, use “Baixar HTML final”.');
+    }catch(err){
+      console.error(err);
+      if(String(err && err.name).includes('Quota') || String(err).includes('quota')){
+        alert('As alterações foram aplicadas, mas as fotos estão muito pesadas para salvar no navegador. Reduzi a qualidade automaticamente; tente enviar menos fotos ou use links de imagem. Depois clique em Baixar HTML final.');
+      }else{
+        alert('Não foi possível salvar. As alterações foram aplicadas na tela, mas não ficaram gravadas no navegador.');
+      }
+      applyDataToSite(data);
+      setStatus('Aplicado na tela, mas não salvo no navegador.');
+    }
+  };
+
+  window.downloadFullEditedHTML = function(){
+    const data = readUniversalAdminData();
+    if(data){ setStore(data); applyDataToSite(data); }
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('.admin-panel, .admin-open, .admin-tip').forEach(el=>{}); // mantém ADM no arquivo final
+    const doc = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([doc], {type:'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'site-hadan-com-adm-total.html';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const oldLogin = window.loginAdmin;
+  window.loginAdmin = function(){
+    if(typeof oldLogin === 'function') oldLogin();
+    if(document.getElementById('adminControls')?.style.display !== 'none') renderUniversalAdmin();
+  };
+
+
+
+  // Corrige também os campos antigos do ADM principal para trabalharem junto com o editor completo.
+  document.getElementById('admHeroFile')?.addEventListener('change', async function(){
+    const files = Array.from(this.files || []);
+    if(!files.length) return;
+    const urls = await Promise.all(files.map(fileToDataURL));
+    const current = getStore();
+    current.images = current.images || {};
+    current.images.hero = urls.filter(Boolean).join('\n');
+    setStore(current);
+    applyDataToSite(current);
+    const area = document.querySelector('.ua-img-url[data-img-key="hero"]');
+    if(area) area.value = current.images.hero;
+    const oldUrl = document.getElementById('admHeroUrl');
+    if(oldUrl) oldUrl.value = current.images.hero;
+    setStatus('Hero atualizado pelo upload. Clique em Salvar tudo para manter.');
+    this.value = '';
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    applyStore();
+    renderUniversalAdmin();
+    const style = document.createElement('style');
+    style.textContent = `
+      .universal-admin{margin-top:1.2rem;border-top:1px solid var(--line);padding-top:1.2rem}
+      .universal-admin h3{font-family:Playfair Display,serif;font-size:1.45rem;margin-bottom:.4rem;color:var(--gold2)}
+      .universal-admin details{border:1px solid var(--line);border-radius:18px;padding:1rem;margin:.9rem 0;background:rgba(255,255,255,.025)}
+      .universal-admin summary{cursor:pointer;color:var(--gold2);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}
+      .ua-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1rem}
+      .ua-list{display:grid;gap:.8rem;margin-top:1rem}
+      .universal-admin label{display:grid;gap:.35rem;color:var(--gold2);font-size:.72rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+      .universal-admin label span{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:700}
+      .universal-admin small{color:var(--muted);font-size:.68rem;text-transform:none;letter-spacing:0;font-weight:600}
+      .universal-admin input,.universal-admin textarea{width:100%;background:#050505;border:1px solid var(--line);border-radius:12px;color:var(--white);padding:.75rem;font-family:Inter;font-size:16px;text-transform:none;letter-spacing:0;font-weight:500}
+      .universal-admin textarea{min-height:84px;resize:vertical}
+      .ua-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin:.9rem 0}
+      .ua-status{min-height:1.2rem;color:var(--gold2);font-size:.78rem;font-weight:800;margin:.35rem 0 .7rem}
+      .adm-photo-slot{position:relative;color:#fff;text-shadow:0 3px 12px #000}
+      @media(max-width:760px){.ua-grid{grid-template-columns:1fr}.admin-box{padding:1rem}.universal-admin details{padding:.8rem}}
+    `;
+    document.head.appendChild(style);
+  });
+})();
+
+
+</script>
+</body>
+</html>
