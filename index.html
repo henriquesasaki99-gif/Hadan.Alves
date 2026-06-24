@@ -56,7 +56,7 @@ nav{
   filter:blur(4px)
 }
 .grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:90px 90px;opacity:.08;mask-image:linear-gradient(to bottom,black,transparent 95%)}
-.hero-content{position:relative;z-index:2}
+.hero-content{position:relative;z-index:3;visibility:visible}
 .badge{
   display:inline-flex;gap:.7rem;align-items:center;border:1px solid var(--line);background:rgba(214,168,61,.08);
   padding:.65rem 1rem;border-radius:999px;color:var(--gold2);font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.5rem
@@ -81,7 +81,7 @@ h1 em{font-style:italic;font-weight:500;color:var(--gold2);text-shadow:0 0 45px 
 .metric{background:rgba(5,5,5,.92);padding:1.5rem}
 .metric strong{display:block;font-family:Bebas Neue,sans-serif;color:var(--gold2);font-size:2.7rem;line-height:1}
 .metric span{font-size:.7rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
-.hero-visual{position:relative;z-index:2;min-height:560px;display:flex;align-items:center;justify-content:center}
+.hero-visual{position:relative;z-index:3;min-height:560px;display:flex;align-items:center;justify-content:center}
 .orbit{width:min(36vw,430px);height:min(36vw,430px);border:1px solid var(--line);border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;animation:spin 18s linear infinite}
 .orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(214,168,61,.16);border-radius:50%}.orbit:before{inset:42px}.orbit:after{inset:88px}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -156,7 +156,7 @@ textarea{min-height:110px;resize:none}input:focus,select:focus,textarea:focus{bo
 @keyframes pulse{50%{transform:scale(1.08)}}
 footer{padding:2.4rem 4.5rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--muted);font-size:.8rem}.footlogo{font-family:Bebas Neue;color:var(--gold2);font-size:1.4rem;letter-spacing:.18em}
 
-.reveal{opacity:0;transform:translateY(26px);transition:.7s}.reveal.on{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:none;transition:.7s}.reveal.on{opacity:1;transform:none}
 @media(max-width:1050px){
   nav{padding:1rem 1.4rem}.navlinks{display:none}.hamb{display:flex}.navlinks.open{display:flex;position:fixed;top:5.2rem;left:1rem;right:1rem;flex-direction:column;background:#080808;border:1px solid var(--line);padding:1.5rem;border-radius:22px}
   .hero{grid-template-columns:1fr;padding:8rem 1.4rem 4rem}.hero-visual{min-height:330px}.orbit{width:290px;height:290px}.float{display:none}
@@ -481,8 +481,16 @@ function toggleMenu(){
   hamb && hamb.classList.toggle('active', nav.classList.contains('open'));
 }
 document.querySelectorAll('.navlinks a').forEach(a=>a.onclick=()=>{document.getElementById('navlinks').classList.remove('open');document.querySelector('.hamb')?.classList.remove('active')});
-const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);obs.unobserve(e.target)}})},{threshold:.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+try{
+  if('IntersectionObserver' in window){
+    const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*70);obs.unobserve(e.target)}})},{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  }else{
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
+  }
+}catch(err){
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'));
+}
 function sendWA(e){
   e.preventDefault();
   const nome=document.getElementById('nome').value.trim();
